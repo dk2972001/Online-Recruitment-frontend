@@ -1,0 +1,293 @@
+<link
+  href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+  rel="stylesheet"
+  id="bootstrap-css"
+/>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<div class="backgroundsetter">
+  <div class="container register">
+    <div class="row">
+      <div class="col-md-3 register-left">
+        <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
+        <h3>Welcome</h3>
+
+        <p>Unlock your potential. Join us and let your career soar.</p>
+        <input
+          type="submit"
+          class="custom-login-btn"
+          (click)="navigateToLogin()"
+          name=""
+          value="Login"
+        /><br />
+      </div>
+      <div class="col-md-9 register-right">
+        <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+          <li class="nav-item">
+            <!-- <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Employee</a> -->
+          </li>
+          <li class="nav-item">
+            <!-- <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Hirer</a> -->
+          </li>
+        </ul>
+        <form [formGroup]="signupForm" (ngSubmit)="signup()">
+          <div class="tab-content" id="myTabContent">
+            <div
+              class="tab-pane fade show active"
+              id="home"
+              role="tabpanel"
+              aria-labelledby="home-tab"
+            >
+              <h3 class="register-heading">SIGNUP</h3>
+              <div class="row register-form">
+                <div class="col-md-6">
+                  <!-- <div class="form-group">
+                                        <input type="text" class="form-control" formControlName="username" placeholder="Enter your User name">
+                                        <div *ngIf="signupForm.get('username')?.errors?.['required'] && signupForm.get('username')?.touched" class="invalid-feedback d-block">User Name is required.</div>
+                                        <div *ngIf="signupForm.get('username')?.errors?.['minlength'] && signupForm.get('username')?.touched" class="invalid-feedback d-block">User Name must be at least 3 characters.</div>
+                                      </div> -->
+
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="fullName"
+                      placeholder="Enter your full name"
+                    />
+                    <div
+                      *ngIf="signupForm.get('fullName')?.errors?.['required'] && signupForm.get('fullName')?.touched"
+                      class="invalid-feedback d-block"
+                    >
+                      Full Name is required.
+                    </div>
+                    <div
+                      *ngIf="signupForm.get('fullName')?.errors?.['minlength'] && signupForm.get('fullName')?.touched"
+                      class="invalid-feedback d-block"
+                    >
+                      Full Name must be at least 3 characters.
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <input
+                      type="date"
+                      class="form-control"
+                      formControlName="dob"
+                      placeholder="Enter your date of birth"
+                    />
+                    <div
+                      *ngIf="signupForm.get('dob')?.errors?.['required'] && signupForm.get('dob')?.touched"
+                      class="invalid-feedback d-block"
+                    >
+                      Date of Birth is required.
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <select class="form-control" formControlName="nationality">
+                      <option value="" disabled selected>
+                        Select your Nationality
+                      </option>
+                      <option
+                        *ngFor="let country of countries"
+                        [value]="country"
+                      >
+                        {{ country }}
+                      </option>
+                    </select>
+                    <div
+                      *ngIf="signupForm.get('nationality')?.errors?.['required'] && signupForm.get('nationality')?.touched"
+                      class="invalid-feedback d-block"
+                    >
+                      Nationality is required.
+                    </div>
+                  </div>
+
+                  <!-- <div class="form-group">
+                                          <label>Gender:</label><br>
+                                          <div *ngFor="let genderOption of genderOptions" style="display: inline-block; margin-right: 10px;">
+                                            <input type="radio" [id]="genderOption.value" [value]="genderOption.value" formControlName="gender">
+                                            <label [for]="genderOption.value">{{ genderOption.label }}</label>
+                                          </div>
+                                          <div *ngIf="signupForm.get('gender')?.errors?.['required'] && signupForm.get('gender')?.touched" class="invalid-feedback d-block">Gender is required.</div>
+                                        </div> -->
+
+                  <div class="form-group">
+                    <select class="form-control" formControlName="gender">
+                      <option value="" disabled selected>
+                        Select your gender
+                      </option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                      <option value="other">Other</option>
+                    </select>
+                    <div
+                      *ngIf="signupForm.get('gender')?.errors?.['required'] && signupForm.get('gender')?.touched"
+                      class="invalid-feedback d-block"
+                    >
+                      Gender is required.
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <select
+                      class="form-control"
+                      formControlName="role"
+                      id="role"
+                    >
+                      <option value="" disabled selected>
+                        Select your role
+                      </option>
+                      <option value="employee">Employee</option>
+                      <option value="student">Student</option>
+                    </select>
+                    <div
+                      *ngIf="signupForm.get('role')?.errors?.['required'] && signupForm.get('role')?.touched"
+                      class="invalid-feedback d-block"
+                    >
+                      Role is required.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="address"
+                      placeholder="Enter your Address"
+                    />
+                    <div
+                      *ngIf="signupForm.get('address')?.errors?.['required'] && signupForm.get('address')?.touched"
+                      class="invalid-feedback d-block"
+                    >
+                      Address is required.
+                    </div>
+                    <div
+                      *ngIf="signupForm.get('address')?.errors?.['minlength'] && signupForm.get('address')?.touched"
+                      class="invalid-feedback d-block"
+                    >
+                      User Name must be at least 3 characters.
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <input
+                      type="email"
+                      id="email"
+                      class="form-control"
+                      formControlName="email"
+                      placeholder="Enter your email"
+                      required
+                    />
+                    <div
+                      *ngIf="signupForm.get('email')?.errors?.['required'] && signupForm.get('email')?.touched"
+                      class="invalid-feedback d-block"
+                    >
+                      Email is required.
+                    </div>
+                    <div
+                      *ngIf="signupForm.get('email')?.errors?.['email'] && signupForm.get('email')?.touched"
+                      class="invalid-feedback d-block"
+                    >
+                      Invalid email format.
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="phoneNumber"
+                      placeholder="Enter your phone number"
+                      pattern="[0-9]{10}"
+                    />
+                    <div
+                      *ngIf="signupForm.get('phoneNumber')?.errors?.['required'] && signupForm.get('phoneNumber')?.touched"
+                      class="invalid-feedback d-block"
+                    >
+                      Phone Number is required.
+                    </div>
+                    <div
+                      *ngIf="signupForm.get('phoneNumber')?.errors?.['pattern'] && signupForm.get('phoneNumber')?.touched"
+                      class="invalid-feedback d-block"
+                    >
+                      Invalid phone number format. It should be 10 digits.
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <input
+                      type="password"
+                      class="form-control"
+                      formControlName="password"
+                      placeholder="Enter your password"
+                    />
+                    <div
+                      *ngIf="signupForm.get('password')?.errors?.['required'] && signupForm.get('password')?.touched"
+                      class="invalid-feedback d-block"
+                    >
+                      Password is required.
+                    </div>
+                    <div
+                      *ngIf="signupForm.get('password')?.errors?.['minlength'] && signupForm.get('password')?.touched"
+                      class="invalid-feedback d-block"
+                    >
+                      Password must be at least 8 characters.
+                    </div>
+                    <div
+                      *ngIf="signupForm.get('password')?.errors?.['strongPassword']"
+                      class="errors-message"
+                    >
+                      Your Password Must Contain <br />
+                      *At least 8 characters<br />
+                      *Number[0-9] <br />
+                      *Lower case [a-z] <br />
+                      *Upper case [A-Z] <br />
+                      *Special characters[!#$%] etc
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <input
+                      type="password"
+                      class="form-control"
+                      formControlName="confirmPassword"
+                      placeholder="Confirm Password"
+                    />
+                    <div
+                      *ngIf="signupForm.get('confirmPassword')?.errors?.['required'] && signupForm.get('confirmPassword')?.touched"
+                      class="invalid-feedback d-block"
+                    >
+                      Confirm Password is required.
+                    </div>
+                    <div
+                      *ngIf="
+                        signupForm.hasError('passwordMismatch') &&
+                        signupForm.get('confirmPassword')?.touched
+                      "
+                      class="invalid-feedback d-block"
+                    >
+                      Passwords do not match.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="center-btn form-group">
+                  <button
+                    type="submit"
+                    [disabled]="signupForm.invalid"
+                    class="btn btn-primary btn-block"
+                  >
+                    Sign Up
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

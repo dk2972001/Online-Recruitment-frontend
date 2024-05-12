@@ -1,0 +1,65 @@
+/* login.component.css */
+.bg-image {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS26SkfkIU6M8Px587a2heYDCDrm_Xl06HMMA&s');
+    background-size: cover;
+  }
+  
+  .card {
+    background-image: url('https://image.slidesdocs.com/responsive-images/docs/template-for-professional-business-photography-with-lighting-page-border-background-word-template_fed2dd83c4__1131_1600.jpg');
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .invalid-feedback.d-block {
+    color: #ff0000; /* Red color for error messages */
+    /* font-weight:; Make the text bold */
+    font-size: 13px;
+  }
+  
+  
+  
+  .card-title {
+    color: #333;
+  }
+  
+  .form-control {
+    border: 1px solid #ced4da;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+  }
+  .custom-button {
+    background-color: #007bff; /* Blue background */
+    border: 1px solid #007bff; /* Blue border */
+    color: #ffffff; /* White text */
+    padding: 5px 80px; /* Padding */
+    text-align: center; /* Center text */
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Cursor style */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s; /* Smooth transition */
+    border-radius: 20px 0px;
+    
+  }
+  
+  .custom-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    border-color: #0056b3; /* Darker border on hover */
+  }
+  
+  .custom-button:active {
+    transform: translateY(1px); /* Add a slight downward movement when clicked */
+  }
+  .forgot-password {
+    float: right;
+  }
+  
