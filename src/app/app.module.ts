@@ -24,6 +24,9 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { provideHttpClient } from '@angular/common/http';
 import { CollegeComponent } from './college/college.component';
 import { StudentComponent } from './student/student.component';
+import { EmployerComponent } from './employer/employer.component';
+import { JobComponent } from './job/job.component';
+import { CompanyComponent } from './company/company.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,9 @@ import { StudentComponent } from './student/student.component';
     JobAvailabilityComponent,
     CollegeComponent,
     StudentComponent,
+    EmployerComponent,
+    JobComponent,
+    CompanyComponent,
     // Declare LoginComponent here
   ],
   imports: [

@@ -9,6 +9,9 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
 import { JobAvailabilityComponent } from './job-availability/job-availability.component';
 import { StudentComponent } from './student/student.component';
 import { CollegeComponent } from './college/college.component';
+import { EmployerComponent } from './employer/employer.component';
+import { JobComponent } from './job/job.component';
+import { CompanyComponent } from './company/company.component';
 // Import other components you want to route to
 
 const routes: Routes = [
@@ -22,6 +25,9 @@ const routes: Routes = [
   { path: 'job-availability', component: JobAvailabilityComponent },
   { path: 'student', component: StudentComponent },
   { path: 'college', component: CollegeComponent },
+  { path: 'employer', component: EmployerComponent},
+  { path: 'job', component: JobComponent},
+  { path: 'company', component: CompanyComponent},
 ];
 
 @NgModule({
