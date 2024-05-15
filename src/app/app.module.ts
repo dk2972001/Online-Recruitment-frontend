@@ -26,6 +26,7 @@ import { CollegeComponent } from './college/college.component';
 import { StudentComponent } from './student/student.component';
 import { JobListComponent } from './job-list/job-list.component';
 import { JobItemComponent } from './job-list/job-item/job-item.component';
+import { JobDetailsComponent } from './job-details/job-details.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { JobItemComponent } from './job-list/job-item/job-item.component';
     StudentComponent,
     JobListComponent,
     JobItemComponent,
+    JobDetailsComponent,
     // Declare LoginComponent here
   ],
   imports: [
