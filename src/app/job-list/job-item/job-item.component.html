@@ -1,1 +1,25 @@
-<p>job-item works!</p>
+<div class="job-item">
+  <div class="recent-job-list">
+    <div class="width-100">
+      <h4 class="job-title">{{ jobName }}</h4>
+    </div>
+	<br>
+    <div class="width-50">
+      <i class="fa fa-briefcase" aria-hidden="true"></i> {{ jobType }}
+    </div>
+    <div class="width-50">
+      <i class="fa fa-inr" aria-hidden="true"></i> {{ salary }}
+    </div>
+    <div class="width-50">
+      <i class="fa fa-user" aria-hidden="true"></i> {{ jobVaccancy }}
+    </div>
+    <div class="width-100">
+      <p class="job-skill">
+        <b>Description : </b>{{ jobDescription }}
+      </p>
+    </div>
+    <div class="width-100">
+      <a href="{{ applyLink }}" class="job-apply-button">Apply Now</a>
+    </div>
+  </div>
+</div>
