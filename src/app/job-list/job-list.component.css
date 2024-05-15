@@ -1,4 +1,3 @@
-/*****RECENT JOB SECTION RECENT JOB SECTION*****/
 .recent-job {
 	padding-top: 50px;
 	background-color: #f0f3fa;
@@ -22,32 +21,4 @@
 	margin-left: 10px;
 	margin-right: 10px;
 	margin-bottom: 20px;
-}
-
-.job-title {
-	font-size: 20px;
-}
-
-.job-company {
-	margin-top: 10px;
-	margin-bottom: 20px;
-}
-
-.job-company i {
-	color: orange;
-	margin-left: 10px;
-}
-
-.job-skill {
-	margin-top: 20px;
-	margin-bottom: 10px;
-	font-size: 16px;
-}
-
-.job-apply-button {
-	background: blue;
-	padding: 10px;
-	color: white;
-	text-decoration: none;
-	float: right;
 }
