@@ -22,6 +22,8 @@ import { JobAvailabilityComponent } from './job-availability/job-availability.co
 import { SignupService } from './signup.service';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { provideHttpClient } from '@angular/common/http';
+import { CollegeComponent } from './college/college.component';
+import { StudentComponent } from './student/student.component';
 
 @NgModule({
   declarations: [
@@ -32,8 +34,9 @@ import { provideHttpClient } from '@angular/common/http';
     ForgotPasswordComponent,
     OtpVerificationComponent,
     ResetpasswordComponent,
-
     JobAvailabilityComponent,
+    CollegeComponent,
+    StudentComponent,
     // Declare LoginComponent here
   ],
   imports: [
