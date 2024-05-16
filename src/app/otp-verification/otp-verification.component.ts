@@ -18,7 +18,7 @@ export class OtpVerificationComponent implements OnInit {
 
   ngOnInit(): void {
     // Get the email address from query parameters
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe((params: { [x: string]: string; }) => {
       this.email = params['email'];
 
     });

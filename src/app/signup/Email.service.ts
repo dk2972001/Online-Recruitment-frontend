@@ -14,7 +14,7 @@ export class EmailService implements OnInit {
 
   ngOnInit(): void {
     // Get the email address from query parameters
-    this.route.queryParams.subscribe((params) => {
+    this.route.queryParams.subscribe((params: { [x: string]: string; }) => {
       this.selectedRole = params['selectedRole'];
       console.log(this.selectedRole);
     });
@@ -49,8 +49,8 @@ export class EmailService implements OnInit {
       message_html: `Your RoleID is: ${this.generatedRoleID}`,
     };
 
-    const publicKey = 'putPbNfjUPBbICWr1'; // Replace with your EmailJS public key
-    Email.send('service_yknabnr', 'template_xxlzugr', templateParams, publicKey)
+    const publicKey = '--7Xs2rjNZ8uybBnn'; // Replace with your EmailJS public key
+    Email.send('service_qr5l01e', 'template_g5tlhmf', templateParams, publicKey)
       .then((response) => {
         console.log('Email sent successfully:', response);
         alert('RoleID has been sent successfully. Please check your email.');
@@ -75,8 +75,8 @@ export class EmailService implements OnInit {
       message_html: `Your OTP for registration is: ${this.generatedOTP}`,
     };
 
-    const publicKey = 'putPbNfjUPBbICWr1'; // Replace with your EmailJS public key
-    Email.send('service_yknabnr', 'template_xxlzugr', templateParams, publicKey)
+    const publicKey = '--7Xs2rjNZ8uybBnn'; // Replace with your EmailJS public key _template_xxlzugr__service_yknabnr
+    Email.send('service_qr5l01e', 'template_g5tlhmf', templateParams, publicKey)
       .then((response) => {
         console.log('Email sent successfully:', response);
         alert('OTP sent successfully. Please check your email.');
