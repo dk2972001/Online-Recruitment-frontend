@@ -24,6 +24,9 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { provideHttpClient } from '@angular/common/http';
 import { CollegeComponent } from './college/college.component';
 import { StudentComponent } from './student/student.component';
+import { JobListComponent } from './job-list/job-list.component';
+import { JobItemComponent } from './job-list/job-item/job-item.component';
+import { JobDetailsComponent } from './job-details/job-details.component';
 import { EmployerComponent } from './employer/employer.component';
 import { JobComponent } from './job/job.component';
 import { CompanyComponent } from './company/company.component';
@@ -40,6 +43,9 @@ import { CompanyComponent } from './company/company.component';
     JobAvailabilityComponent,
     CollegeComponent,
     StudentComponent,
+    JobListComponent,
+    JobItemComponent,
+    JobDetailsComponent,
     EmployerComponent,
     JobComponent,
     CompanyComponent,

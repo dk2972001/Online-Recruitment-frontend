@@ -9,6 +9,8 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
 import { JobAvailabilityComponent } from './job-availability/job-availability.component';
 import { StudentComponent } from './student/student.component';
 import { CollegeComponent } from './college/college.component';
+import { JobListComponent } from './job-list/job-list.component';
+import { JobDetailsComponent } from './job-details/job-details.component';
 import { EmployerComponent } from './employer/employer.component';
 import { JobComponent } from './job/job.component';
 import { CompanyComponent } from './company/company.component';
@@ -22,9 +24,11 @@ const routes: Routes = [
   { path: 'forgotpassword', component: ForgotPasswordComponent },
   { path: 'otpverification', component: OtpVerificationComponent },
   { path: 'resetpassword', component: ResetpasswordComponent },
-  { path: 'job-availability', component: JobAvailabilityComponent },
+  { path: 'job-availability/:jobId', component: JobAvailabilityComponent },
   { path: 'student', component: StudentComponent },
   { path: 'college', component: CollegeComponent },
+  { path: 'job-list', component: JobListComponent },
+  { path: 'job-details/:jobId', component: JobDetailsComponent },
   { path: 'employer', component: EmployerComponent},
   { path: 'job', component: JobComponent},
   { path: 'company', component: CompanyComponent},
