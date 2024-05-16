@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './job-details.component.css',
 })
 export class JobDetailsComponent implements OnInit {
-  jobId: string = '';
+  jobId: string='';
   job = {
     jobName: 'HTML Designer',
     salary: 'No disclosed',

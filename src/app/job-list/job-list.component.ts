@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrl: './job-list.component.css',
 })
 export class JobListComponent {
+  jobId:string = '1';
   // dummy data
   jobs = [
     {

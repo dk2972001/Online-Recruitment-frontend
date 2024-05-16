@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import {
   FormBuilder,
   FormGroup,
@@ -12,10 +13,11 @@ import {
   templateUrl: './job-availability.component.html',
   styleUrl: './job-availability.component.css',
 })
-export class JobAvailabilityComponent {
+export class JobAvailabilityComponent implements OnInit {
   jobAvailabilityForm!: FormGroup;
+  jobId: string = '';
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private route: ActivatedRoute) {}
 
   validateFile(control: AbstractControl): { [key: string]: any } | null {
     const file = control.value;
@@ -41,6 +43,7 @@ export class JobAvailabilityComponent {
       project: ['', Validators.pattern('([a-zA-Z]+,?)*')],
       resume: ['', [Validators.required, this.validateFile]],
     });
+    this.jobId = this.route.snapshot.paramMap.get('jobId')!;
   }
   submit() {
     console.log(this.jobAvailabilityForm.value);

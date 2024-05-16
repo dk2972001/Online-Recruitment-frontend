@@ -19,6 +19,7 @@
         <!-----JOB LIST----->
         <app-job-item
           *ngFor="let job of jobs"
+          [jobId]="jobId"
           [jobName]="job.jobName"
           [salary]="job.salary"
           [jobType]="job.jobType"

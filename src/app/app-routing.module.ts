@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'forgotpassword', component: ForgotPasswordComponent },
   { path: 'otpverification', component: OtpVerificationComponent },
   { path: 'resetpassword', component: ResetpasswordComponent },
-  { path: 'job-availability', component: JobAvailabilityComponent },
+  { path: 'job-availability/:jobId', component: JobAvailabilityComponent },
   { path: 'student', component: StudentComponent },
   { path: 'college', component: CollegeComponent },
   { path: 'job-list', component: JobListComponent },
