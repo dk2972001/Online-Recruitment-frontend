@@ -1,1 +1,114 @@
-<p>job-details works!</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald&display=swap"
+      rel="stylesheet"
+    />
+    <title>Job</title>
+  </head>
+
+  <body>
+    <header class="main-header">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg main-nav px-0">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#mainMenu"
+            aria-controls="mainMenu"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="icon-bar icon-bar-1"></span>
+            <span class="icon-bar icon-bar-2"></span>
+            <span class="icon-bar icon-bar-3"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="mainMenu">
+            <ul class="navbar-nav ml-auto text-uppercase f1">
+              <!-- <li>
+              <a href="#home" class=" active-first">Home</a>
+            </li> -->
+              <li>
+                <a routerLink="/login">Login</a>
+              </li>
+              <li>
+                <a routerLink="/signup">Sign Up</a>
+              </li>
+              <li>
+                <a href="#about">About us</a>
+              </li>
+              <li>
+                <a href="#allJobs ">All Jobs</a>
+              </li>
+              <li>
+                <a href="#Interships">Interships</a>
+              </li>
+              <li>
+                <a href="#govt">Govt. Jobs</a>
+              </li>
+              <li>
+                <a href="#contact">Contact us</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <!-- /.container -->
+    </header>
+    <main>
+      <div
+        class="d-flex align-items-center justify-content-center"
+        style="height: 85vh"
+      >
+        <div class="job-details container">
+          <div class="row p-3">
+            <div class="col-md-12">
+              <div class="mx-auto">
+                <h2 class="text-center fs-1">{{ job.jobName }}</h2>
+              </div>
+            </div>
+          </div>
+          <div class="row p-3">
+            <div class="col fs-4 mx-4">
+                <p><b>Salary:</b> {{ job.salary }}</p>
+                <p><b>Job Type:</b> {{ job.jobType }}</p>
+                <p><b>Description:</b> {{ job.jobDescription }}</p>
+                <p><b>Vaccancy:</b> {{ job.jobVaccancy }}</p>
+            </div>
+			<div class="col fs-4 ">
+				<p><b>Company Name:</b> {{ job.companyName }}</p>
+				<p><b>Type:</b> {{ job.companyType }}</p>
+				<p><b>Description:</b> {{ job.companyDescr }}</p>
+				<p><b>Address:</b> {{ job.companyAddress }}</p>
+			</div>
+          </div>
+		  <div class="row p-4">
+			<a [routerLink]="['/job-availability', jobId]" class="btn btn-primary">Apply</a>
+		  </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
