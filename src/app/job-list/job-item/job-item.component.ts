@@ -6,6 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrl: './job-item.component.css',
 })
 export class JobItemComponent {
+  @Input() jobId: string = '';
   @Input() jobName: string = '';
   @Input() salary: string = '';
   @Input() jobType: string = '';
