@@ -27,6 +27,9 @@ import { StudentComponent } from './student/student.component';
 import { JobListComponent } from './job-list/job-list.component';
 import { JobItemComponent } from './job-list/job-item/job-item.component';
 import { JobDetailsComponent } from './job-details/job-details.component';
+import { EmployerComponent } from './employer/employer.component';
+import { JobComponent } from './job/job.component';
+import { CompanyComponent } from './company/company.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +46,9 @@ import { JobDetailsComponent } from './job-details/job-details.component';
     JobListComponent,
     JobItemComponent,
     JobDetailsComponent,
+    EmployerComponent,
+    JobComponent,
+    CompanyComponent,
     // Declare LoginComponent here
   ],
   imports: [
