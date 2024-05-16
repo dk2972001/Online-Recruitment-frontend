@@ -29,8 +29,12 @@ export class CollegeComponent {
   onSubmit() {
     if (this.collegeForm.valid) {
       console.log('Form Submission', this.collegeForm.value);
-      // Additional logic here
+      alert('Successfully Added College Details');
+      this.redirectToJobsList();
     }
+  }
+  redirectToJobsList() {
+    this.router.navigate(['/job-list']);
   }
 
   navigateBack() {

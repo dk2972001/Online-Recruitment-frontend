@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
-  styleUrls: ['./student.component.css']
+  styleUrls: ['./student.component.css'],
 })
 export class StudentComponent implements OnInit {
   studentForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
     this.studentForm = this.formBuilder.group({
@@ -18,22 +19,27 @@ export class StudentComponent implements OnInit {
       student_mobile: ['', Validators.required],
       student_email: ['', [Validators.required, Validators.email]],
       student_address: ['', Validators.required],
-      student_gender: ['', Validators.required]  // Added gender control
+      student_gender: ['', Validators.required],
     });
   }
 
   addStudent() {
     if (this.studentForm.valid) {
       console.log('Student added:', this.studentForm.value);
-      // You can add additional logic here to handle the submission of the form,
-      // such as sending the data to a backend server.
+      this.proceedToCollege();
     } else {
       console.log('Form is not valid');
     }
   }
 
-  navigateBack() {
-    console.log('Navigating back');
-    // Here you could navigate back to a previous page or perform other navigation actions.
+  proceedToCollege() {
+    alert('Successfully added Student details');
+    console.log('Proceeding to College');
+    this.router.navigate(['/college']);
   }
+
+  navigateBack(){
+    console.log('Navigating back');
+    this.router.navigate(['/home']);
+  };
 }
