@@ -73,16 +73,25 @@
               </div>
             </div>
             <div class="md-3">
-              <label for="role-type" class="form-label"> Role Type </label>
-              <select
-                name="roleType"
-                [(ngModel)]="roleType"
-                class="form-select"
+              <label for="roleId" class="form-label"> Role ID </label>
+              <input
+                type="text"
+                id="roleId"
+                name="roleId"
+                class="form-control"
+                [(ngModel)]="roleId"
+                pattern="^(EMP|STD)\d{6}$"
                 required
+              />
+              <div
+                *ngIf="
+                  loginForm.controls['roleId']?.touched &&
+                  loginForm.controls['roleId']?.invalid
+                "
+                class="invalid-feedback d-block"
               >
-                <option value="job-availability">Job availability</option>
-                <option value="appointment">Schedule Appointment</option>
-              </select>
+                Enter valid Role Id
+              </div>
             </div>
             <div class="md-3">
               <p class="forgot-password">
@@ -103,11 +112,6 @@
     </div>
   </div>
 </div>
-
-
-
-
-
 
 <!-- <div class="container-fluid bg-image">
   <div class="row justify-content-center align-items-center vh-100">

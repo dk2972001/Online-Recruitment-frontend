@@ -9,9 +9,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  'username': string = '';
+  'email': string = '';
   'password': string = '';
-  email: any;
+  'roleId': string = '';
   roleType: string = '';
   showUniqueIdInput: boolean | undefined;
   selectedRole: string | undefined;
@@ -25,10 +25,15 @@ export class LoginComponent {
 
   login() {
     // Here you can perform authentication logic
-    console.log('Username:', this['username']);
+    console.log('Email:', this['email']);
     console.log('Password:', this['password']);
-    if (this.roleType === 'job-availability') {
-      this.router.navigate(['/job-availability']);
+    if (this['roleId'].includes('STD')) {
+      this.router.navigate(['/student']);
+    } else if (this['roleId'].includes('EMP')) {
+      this.router.navigate(['/employer']);
+    } else {
+      alert('Invalid roleId, Try again!');
+      this.router.navigate(['/']);
     }
   }
   navigateToSignUp() {
