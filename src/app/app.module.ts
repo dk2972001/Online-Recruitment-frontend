@@ -65,7 +65,7 @@ import { CompanyComponent } from './company/company.component';
     HttpClientModule,
   ],
   providers: [EmailService, SignupService, provideHttpClient(), 
-    { provide: HttpClient, useFactory: () => provideHttpClient(withFetch()) }
+    // { provide: HttpClient, useFactory: () => provideHttpClient(withFetch()) }
   ],
   bootstrap: [AppComponent],
 })
