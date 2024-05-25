@@ -30,11 +30,16 @@ export class CollegeComponent {
     if (this.collegeForm.valid) {
       console.log('Form Submission', this.collegeForm.value);
       alert('Successfully Added College Details');
-      this.redirectToJobsList();
+      // this.redirectToJobsList();
+      this.navigateToLogin();
     }
   }
   redirectToJobsList() {
     this.router.navigate(['/job-list']);
+  }
+  navigateToLogin() {
+    // Navigate to the login page
+    this.router.navigate(['/login']);
   }
 
   navigateBack() {
