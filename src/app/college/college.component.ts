@@ -1,16 +1,22 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CollegeService } from '../college.service';
+import { College } from '../college.model';  // Ensure you have a College model
 
 @Component({
   selector: 'app-college',
   templateUrl: './college.component.html',
-  styleUrl: './college.component.css',
+  styleUrls: ['./college.component.css']
 })
 export class CollegeComponent {
   collegeForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private collegeService: CollegeService
+  ) {
     this.createForm();
   }
 
@@ -28,12 +34,10 @@ export class CollegeComponent {
 
   onSubmit() {
     if (this.collegeForm.valid) {
-      console.log('Form Submission', this.collegeForm.value);
-      alert('Successfully Added College Details');
-      // this.redirectToJobsList();
-      this.navigateToLogin();
+
     }
   }
+
   redirectToJobsList() {
     this.router.navigate(['/job-list']);
   }
