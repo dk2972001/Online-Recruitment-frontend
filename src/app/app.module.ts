@@ -67,7 +67,7 @@ import { AppointmentSchComponent } from './appointment-sch/appointment-sch.compo
     HttpClientModule,
   ],
   providers: [EmailService, SignupService, provideHttpClient(), 
-    { provide: HttpClient, useFactory: () => provideHttpClient(withFetch()) }
+    // { provide: HttpClient, useFactory: () => provideHttpClient(withFetch()) }
   ],
   bootstrap: [AppComponent],
 })
