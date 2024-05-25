@@ -125,7 +125,7 @@ export class SignupComponent implements OnInit {
       this.emailService.sendEmail(email);
 
       console.log('Form submitted successfully!');
-      this.navigateToOtp(email);
+      this.navigateToOtp(email,role);
 
       this.postUser(newUser);
     } else {
@@ -138,9 +138,9 @@ export class SignupComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  navigateToOtp(email: string) {
+  navigateToOtp(email: string,role:string) {
     this.router.navigate(['/otpverification'], {
-      queryParams: { email: email },
+      queryParams: { email: email ,role:role},
     });
   }
 }

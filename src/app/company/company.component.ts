@@ -25,11 +25,17 @@ export class CompanyComponent implements OnInit {
   addCompany() {
     if (this.companyForm.valid) {
       console.log('Company added:', this.companyForm.value);
-      alert('Added Company details');
-      this.proceedingToJobs();
+      alert('login successful');
+      // this.proceedingToJobs();
+      this.navigateToLogin();
+
     } else {
       console.log('Form is not valid');
     }
+  }
+navigateToLogin() {
+    // Navigate to the login page
+    this.router.navigate(['/login']);
   }
 
   proceedingToJobs() {
