@@ -24,14 +24,14 @@ const routes: Routes = [
   { path: 'forgotpassword', component: ForgotPasswordComponent },
   { path: 'otpverification', component: OtpVerificationComponent },
   { path: 'resetpassword', component: ResetpasswordComponent },
-  { path: 'job-availability/:jobId', component: JobAvailabilityComponent },
+  { path: 'job-availability', component: JobAvailabilityComponent },
   { path: 'student', component: StudentComponent },
   { path: 'college', component: CollegeComponent },
   { path: 'job-list', component: JobListComponent },
   { path: 'job-details/:jobId', component: JobDetailsComponent },
-  { path: 'employer', component: EmployerComponent},
-  { path: 'job', component: JobComponent},
-  { path: 'company', component: CompanyComponent},
+  { path: 'employer', component: EmployerComponent },
+  { path: 'job', component: JobComponent },
+  { path: 'company', component: CompanyComponent },
 ];
 
 @NgModule({

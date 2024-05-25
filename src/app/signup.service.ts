@@ -7,27 +7,16 @@ import { User } from './User.model';
   providedIn: 'root',
 })
 export class SignupService {
-  private baseUrl = 'http://localhost:8080'; // Base URL of your Spring Boot backend
+  private baseUrl = 'http://localhost:8080/user'; // Base URL of your Spring Boot backend
+  private baseUrl1 = 'http://localhost:8080/users'; // Base URL of your Spring Boot backend
 
   constructor(private http: HttpClient) {}
 
   getAllUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.baseUrl}/user`);
-  }
-
-  getUser(userId: number): Observable<User> {
-    return this.http.get<User>(`${this.baseUrl}/user/${userId}`);
+    return this.http.get<User[]>(this.baseUrl);
   }
 
   addUser(user: User): Observable<User> {
-    return this.http.post<User>(`${this.baseUrl}/users`, user);
-  }
-
-  updateUser(userId: number, user: User): Observable<User> {
-    return this.http.put<User>(`${this.baseUrl}/users/${userId}`, user);
-  }
-
-  deleteUser(userId: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/users/${userId}`);
+    return this.http.post<User>(this.baseUrl1, user);
   }
 }

@@ -95,7 +95,7 @@ export class SignupComponent implements OnInit {
   postUser(newUser: User) {
     this.signupservice.addUser(newUser).subscribe({
       next: (response: User) => {
-        console.log('Users:', response);
+        console.log('User registered successfully', response);
         this.getUser();
       },
       error: (error: any) => {
@@ -106,16 +106,19 @@ export class SignupComponent implements OnInit {
 
   signup() {
     if (this.signupForm.valid) {
-      const role = this.signupForm.value.role;
+      const newUser: User = {
+        userName: this.signupForm.value.fullName,
+        address: this.signupForm.value.address,
+        email: this.signupForm.value.email,
+        phoneNumber: this.signupForm.value.phoneNumber,
+        gender: this.signupForm.value.gender,
+        nationality: this.signupForm.value.nationality,
+        role: this.signupForm.value.role,
+        dob: this.signupForm.value.dob,
+        password: this.signupForm.value.password,
+      };
 
-      this.emailService.receiveRole(role);
-
-      const email = this.signupForm.value.email;
-      this.emailService.sendEmail(email);
-
-      console.log('Form submitted successfully!');
-      this.navigateToOtp(email);
-      // Add your signup logic here
+      this.postUser(newUser);
     } else {
       console.log('Form is invalid. Please check the fields.');
     }

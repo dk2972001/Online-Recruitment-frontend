@@ -14,7 +14,7 @@ export class EmailService implements OnInit {
 
   ngOnInit(): void {
     // Get the email address from query parameters
-    this.route.queryParams.subscribe((params: { [x: string]: string; }) => {
+    this.route.queryParams.subscribe((params: { [x: string]: string }) => {
       this.selectedRole = params['selectedRole'];
       console.log(this.selectedRole);
     });
@@ -45,8 +45,8 @@ export class EmailService implements OnInit {
     const templateParams = {
       from_name: 'Online Recruitment System',
       to_name: recipientEmail,
-      subject: 'OTP Verification',
-      message_html: `Your RoleID is: ${this.generatedRoleID}`,
+      subject: 'RoleID generation',
+      message: `Your RoleID is: ${this.generatedRoleID}`,
     };
 
     const publicKey = '--7Xs2rjNZ8uybBnn'; // Replace with your EmailJS public key
@@ -72,7 +72,7 @@ export class EmailService implements OnInit {
       from_name: 'Online Recruitment System',
       to_name: recipientEmail,
       subject: 'OTP Verification',
-      message_html: `Your OTP for registration is: ${this.generatedOTP}`,
+      message: `Your OTP for registration is: ${this.generatedOTP}`,
     };
 
     const publicKey = '--7Xs2rjNZ8uybBnn'; // Replace with your EmailJS public key _template_xxlzugr__service_yknabnr
