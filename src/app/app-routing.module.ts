@@ -14,6 +14,7 @@ import { JobDetailsComponent } from './job-details/job-details.component';
 import { EmployerComponent } from './employer/employer.component';
 import { JobComponent } from './job/job.component';
 import { CompanyComponent } from './company/company.component';
+import { AppointmentSchComponent } from './appointment-sch/appointment-sch.component';
 // Import other components you want to route to
 
 const routes: Routes = [
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: 'job-details/:jobId', component: JobDetailsComponent },
   { path: 'employer', component: EmployerComponent },
   { path: 'job', component: JobComponent },
+  { path: 'appointment-sch', component: AppointmentSchComponent},
   { path: 'company', component: CompanyComponent },
 ];
 

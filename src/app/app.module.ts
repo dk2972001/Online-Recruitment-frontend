@@ -30,6 +30,7 @@ import { JobDetailsComponent } from './job-details/job-details.component';
 import { EmployerComponent } from './employer/employer.component';
 import { JobComponent } from './job/job.component';
 import { CompanyComponent } from './company/company.component';
+import { AppointmentSchComponent } from './appointment-sch/appointment-sch.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { CompanyComponent } from './company/company.component';
     EmployerComponent,
     JobComponent,
     CompanyComponent,
+    AppointmentSchComponent,
     // Declare LoginComponent here
   ],
   imports: [
