@@ -20,7 +20,7 @@ import { EmailService } from './signup/Email.service';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { JobAvailabilityComponent } from './job-availability/job-availability.component';
 import { SignupService } from './signup.service';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, withFetch } from '@angular/common/http';
 import { provideHttpClient } from '@angular/common/http';
 import { CollegeComponent } from './college/college.component';
 import { StudentComponent } from './student/student.component';
@@ -66,7 +66,9 @@ import { AppointmentSchComponent } from './appointment-sch/appointment-sch.compo
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [EmailService, SignupService, provideHttpClient()],
+  providers: [EmailService, SignupService, provideHttpClient(), 
+    { provide: HttpClient, useFactory: () => provideHttpClient(withFetch()) }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { StudentService } from '../student.service';
+import { Student } from '../student.model';
 
 @Component({
   selector: 'app-student',
@@ -10,7 +12,11 @@ import { Router } from '@angular/router';
 export class StudentComponent implements OnInit {
   studentForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private studentService: StudentService
+  ) {}
 
   ngOnInit(): void {
     this.studentForm = this.formBuilder.group({
@@ -23,23 +29,32 @@ export class StudentComponent implements OnInit {
     });
   }
 
-  addStudent() {
+  addStudent(): void {
     if (this.studentForm.valid) {
-      console.log('Student added:', this.studentForm.value);
-      this.proceedToCollege();
+      const studentData: Student = {
+        studentId: this.studentForm.value.student_id,
+        studentName: this.studentForm.value.student_name,
+        studentMobile: this.studentForm.value.student_mobile,
+        studentEmail: this.studentForm.value.student_email,
+        studentAddress: this.studentForm.value.student_address,
+        studentGender: this.studentForm.value.student_gender,
+      };
+      this.studentService.addStudent(studentData).subscribe(
+        response => {
+          console.log('Student added:', response);
+          alert('Successfully added Student details');
+          this.router.navigate(['/college']);
+        },
+        error => {
+          console.error('Error adding student:', error);
+        }
+      );
     } else {
       console.log('Form is not valid');
     }
   }
 
-  proceedToCollege() {
-    alert('Successfully added Student details');
-    console.log('Proceeding to College');
-    this.router.navigate(['/college']);
-  }
-
-  navigateBack(){
-    console.log('Navigating back');
+  navigateBack(): void {
     this.router.navigate(['/home']);
-  };
+  }
 }
