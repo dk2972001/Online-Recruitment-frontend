@@ -117,6 +117,15 @@ export class SignupComponent implements OnInit {
         dob: this.signupForm.value.dob,
         password: this.signupForm.value.password,
       };
+      const role = this.signupForm.value.role;
+
+      this.emailService.receiveRole(role);
+
+      const email = this.signupForm.value.email;
+      this.emailService.sendEmail(email);
+
+      console.log('Form submitted successfully!');
+      this.navigateToOtp(email);
 
       this.postUser(newUser);
     } else {
