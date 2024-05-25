@@ -34,28 +34,16 @@ export class CollegeComponent {
 
   onSubmit() {
     if (this.collegeForm.valid) {
-      const collegeData: College = {
-        collegeId: this.collegeForm.value.college_id,
-        collegeName: this.collegeForm.value.college_name,
-        collegeAddress: this.collegeForm.value.college_address,
-        collegeDescp: this.collegeForm.value.college_description
-      };
 
-      this.collegeService.addCollege(collegeData).subscribe(
-        response => {
-          console.log('College added:', response);
-          alert('Successfully Added College Details');
-          this.redirectToJobsList();
-        },
-        error => {
-          console.error('Error adding college:', error);
-        }
-      );
     }
   }
 
   redirectToJobsList() {
     this.router.navigate(['/job-list']);
+  }
+  navigateToLogin() {
+    // Navigate to the login page
+    this.router.navigate(['/login']);
   }
 
   navigateBack() {

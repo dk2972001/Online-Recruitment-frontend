@@ -27,7 +27,7 @@ export class JobComponent implements OnInit {
     if (this.jobForm.valid) {
       console.log('Job added:', this.jobForm.value);
       alert('Added new Job');
-      this.proceedingToJobList();
+      // this.proceedingToJobList();
     } else {
       console.log('Form is not valid');
     }
