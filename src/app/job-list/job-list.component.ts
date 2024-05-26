@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { JobService } from '../services/job.service';
 import { SignupService } from '../services/signup.service';
 import { User } from '../models/User.model';
+import { Job } from '../models/job.model';
 
 @Component({
   selector: 'app-job-list',
@@ -11,17 +13,32 @@ import { User } from '../models/User.model';
 export class JobListComponent implements OnInit {
   userId: any;
   userList: User[] = [];
+  jobsList: Job[] | any = [];
   enableApply: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
-    private signupservice: SignupService
+    private signupservice: SignupService,
+    private jobservice: JobService
   ) {}
 
   ngOnInit(): void {
     this.userId = this.route.snapshot.paramMap.get('userId');
     this.getUser();
+    this.getAllJobs();
     this.setEnableApply();
+  }
+
+  getAllJobs() {
+    this.jobservice.getAllJobs().subscribe({
+      next: (jobs) => {
+        this.jobsList = jobs.length !== 0 ? jobs : this.dummyJobsList;
+        console.log('jobsList:', this.jobsList);
+      },
+      error: (error) => {
+        console.error('Error fetching the jobs:', error);
+      },
+    });
   }
 
   getUser() {
@@ -48,14 +65,16 @@ export class JobListComponent implements OnInit {
   setEnableApply() {
     const result = this.userList
       .filter((user) => this.getIdFromUserObject(user).userId == this.userId)
-      .some((user) => this.getIdFromRoleStringifiedObject(user.role) === 'student');
-    
+      .some(
+        (user) => this.getIdFromRoleStringifiedObject(user.role) === 'student'
+      );
+
     this.enableApply = Boolean(result);
   }
 
   jobId: string = '1';
   // dummy data
-  jobs = [
+  dummyJobsList = [
     {
       jobName: 'HTML Designer',
       salary: 'No disclosed',
