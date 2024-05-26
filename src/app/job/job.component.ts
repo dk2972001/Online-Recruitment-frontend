@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { JobService } from '../services/job.service';
 import { Job } from '../models/job.model';
 
@@ -11,14 +11,17 @@ import { Job } from '../models/job.model';
 })
 export class JobComponent implements OnInit {
   jobForm!: FormGroup;
+  userId: any;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
+    private route: ActivatedRoute,
     private jobService: JobService
   ) {}
 
   ngOnInit(): void {
+    this.userId = this.route.snapshot.paramMap.get('userId');
     this.jobForm = this.formBuilder.group({
       job_id: ['', Validators.required],
       job_name: ['', Validators.required],
@@ -56,7 +59,7 @@ export class JobComponent implements OnInit {
   }
 
   proceedingToJobList() {
-    this.router.navigate(['/job-list']);
+    this.router.navigate(['/job-list', this.userId]);
   }
 
   navigateBack() {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { CompanyService } from '../services/company.service';
 import { Company } from '../models/company.model';
 
@@ -11,14 +11,17 @@ import { Company } from '../models/company.model';
 })
 export class CompanyComponent implements OnInit {
   companyForm!: FormGroup;
+  userId: any;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
+    private route: ActivatedRoute,
     private companyService: CompanyService
   ) {}
 
   ngOnInit(): void {
+    this.userId = this.route.snapshot.paramMap.get('userId');
     this.companyForm = this.formBuilder.group({
       companyId: ['', Validators.required],
       companyType: ['', Validators.required],
@@ -30,7 +33,7 @@ export class CompanyComponent implements OnInit {
 
   addCompany() {
     if (this.companyForm.valid) {
-      const company:Company = this.companyForm.value;
+      const company: Company = this.companyForm.value;
       this.companyService.addCompany(company).subscribe(
         (data) => {
           console.log('Company added:', data);
@@ -48,11 +51,7 @@ export class CompanyComponent implements OnInit {
 
   navigateToJobs() {
     // Navigate to the login page
-    this.router.navigate(['/job']);
-  }
-
-  proceedingToJobs() {
-    this.router.navigate(['/job']);
+    this.router.navigate(['/job', this.userId]);
   }
 
   navigateBack() {
