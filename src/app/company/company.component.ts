@@ -35,7 +35,7 @@ export class CompanyComponent implements OnInit {
         (data) => {
           console.log('Company added:', data);
           alert('Company added successfully');
-          this.navigateToLogin();
+          this.navigateToJobs();
         },
         (error) => {
           console.log('Error:', error);
@@ -46,9 +46,9 @@ export class CompanyComponent implements OnInit {
     }
   }
 
-  navigateToLogin() {
+  navigateToJobs() {
     // Navigate to the login page
-    this.router.navigate(['/login']);
+    this.router.navigate(['/job']);
   }
 
   proceedingToJobs() {
