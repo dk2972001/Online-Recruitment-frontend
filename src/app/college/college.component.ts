@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CollegeService } from '../college.service';
-import { College } from '../college.model'; // Ensure you have a College model
+import { CollegeService } from '../services/college.service';
+import { College } from '../models/college.model'; // Ensure you have a College model
 
 @Component({
   selector: 'app-college',

@@ -1,18 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { College } from './college.model'; 
+import { College } from '../models/college.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CollegeService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   private apiUrl = 'http://localhost:8080/college';
-
-  
 
   addCollege(college: College): Observable<College> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });

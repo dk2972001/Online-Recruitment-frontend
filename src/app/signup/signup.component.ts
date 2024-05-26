@@ -10,10 +10,10 @@ import { Router } from '@angular/router';
 import { EmailService } from './Email.service';
 import { strongPasswordValidator } from './custom-validators'; // Import the custom validator
 import { OtpVerificationComponent } from '../otp-verification/otp-verification.component';
-import { SignupService } from '../signup.service';
+import { SignupService } from '../services/signup.service';
 import { data } from 'jquery';
 import { error } from 'console';
-import { User } from '../User.model';
+import { User } from '../models/User.model';
 
 @Component({
   selector: 'app-signup',
@@ -125,7 +125,7 @@ export class SignupComponent implements OnInit {
       this.emailService.sendEmail(email);
 
       console.log('Form submitted successfully!');
-      this.navigateToOtp(email,role);
+      this.navigateToOtp(email, role);
 
       this.postUser(newUser);
     } else {
@@ -138,9 +138,9 @@ export class SignupComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  navigateToOtp(email: string,role:string) {
+  navigateToOtp(email: string, role: string) {
     this.router.navigate(['/otpverification'], {
-      queryParams: { email: email ,role:role},
+      queryParams: { email: email, role: role },
     });
   }
 }
