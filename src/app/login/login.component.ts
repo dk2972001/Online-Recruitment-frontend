@@ -1,72 +1,96 @@
-// login.component.ts
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SignupService } from '../services/signup.service';
+import { User } from '../models/User.model';
+import { Role } from '../models/Role.model';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent {
-  'email': string = '';
+export class LoginComponent implements OnInit {
+  'userName': string = '';
   'password': string = '';
-  'roleId': string = '';
-  roleType: string = '';
-  showUniqueIdInput: boolean | undefined;
-  selectedRole: string | undefined;
-  constructor(private router: Router) {}
+  showUniqueIdInput: boolean = false;
+  roleId: string = '';
+  email: string = '';
+  userList: User[] = [];
 
-  onRoleChange() {
-    // Show the unique ID input box if "Employee" or "Student" is selected
-    this.showUniqueIdInput =
-      this.selectedRole === 'emp' || this.selectedRole === 'std';
+  constructor(private router: Router, private signupservice: SignupService) {}
+
+  ngOnInit():void {
+    this.getUser();
   }
 
   login() {
-    // Here you can perform authentication logic
-    console.log('Email:', this['email']);
+    this.getUser();
+
+    console.log('Username:', this['userName']);
+    console.log('Email:', this.email);
     console.log('Password:', this['password']);
-    if (this['roleId'].includes('STD')) {
-      this.router.navigate(['/student']);
-    } else if (this['roleId'].includes('EMP')) {
-      this.router.navigate(['/employer']);
+    console.log('UnqiueId:', this.roleId);
+
+    const user = this.userList.find(
+      (user) => user.email === this.email && user.password === this.password
+    );
+
+    if (user) {
+      if (this.roleId.slice(0, 3).toLowerCase() === 'std') {
+        this.navigateToStudent(this.getIdFromUserObject(user));
+      } else if (this.roleId.slice(0, 3).toLowerCase() === 'emp') {
+        this.navigateToEmployer(this.getIdFromUserObject(user));
+      } else {
+        alert('Invalid Role, Please try again.');
+        this.navigateToHome();
+      }
     } else {
-      alert('Invalid roleId, Try again!');
-      this.router.navigate(['/']);
+      alert('User not found. please regsiter yourself.');
+      this.navigateToSignUp();
     }
   }
+  getIdFromRoleStringifiedObject(user: string) {
+    return JSON.parse(JSON.stringify(user)).roleId;
+  }
+
+  getIdFromUserObject(user: User) {
+    return JSON.parse(JSON.stringify(user)).userId;
+  }
+
+  getUser() {
+    this.signupservice.getAllUsers().subscribe({
+      next: (userList) => {
+        this.userList = userList;
+        console.log('userList:', this.userList);
+      },
+      error: (error) => {
+        console.error('Error fetching the users:', error);
+      },
+    });
+  }
+
+  navigateToHome() {
+    this.router.navigate(['/']);
+  }
+
   navigateToSignUp() {
     this.router.navigate(['/signup']);
   }
+
+  navigateToPostjob() {
+    this.router.navigate(['/job']);
+  }
+
+  navigateToJoblist() {
+    this.router.navigate(['/job-list']);
+  }
+
+  navigateToStudent(userId: number | undefined) {
+    this.router.navigate(['/student', userId]);
+  }
+
+  navigateToEmployer(userId: number | undefined) {
+    this.router.navigate(['/employer', userId]);
+  }
 }
-
-// login.component.ts
-// import { Component } from '@angular/core';
-// import { NgForm } from '@angular/forms';
-// import { Router } from '@angular/router';
-
-// @Component({
-//   selector: 'app-login',
-//   templateUrl: './login.component.html',
-//   styleUrls: ['./login.component.css'],
-// })
-// export class LoginComponent {
-//   'username': string = '';
-//   'password': string = '';
-//   email: any;
-//   roleType: string = '';
-//   constructor(private router: Router) {}
-
-//   login() {
-//     // Here you can perform authentication logic
-//     console.log('Username:', this['username']);
-//     console.log('Password:', this['password']);
-//     if (this.roleType === 'job-availability') {
-//       this.router.navigate(['/job-availability']);
-//     }
-//   }
-//   navigateToSignUp() {
-//     this.router.navigate(['/signup']);
-//   }
-// }

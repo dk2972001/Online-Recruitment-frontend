@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { StudentService } from '../student.service';
-import { Student } from '../student.model';
+import { Router, ActivatedRoute } from '@angular/router';
+import { StudentService } from '../services/student.service';
+import { Student } from '../models/student.model';
 
 @Component({
   selector: 'app-student',
@@ -11,14 +11,17 @@ import { Student } from '../student.model';
 })
 export class StudentComponent implements OnInit {
   studentForm!: FormGroup;
+  userId: any;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
+    private route: ActivatedRoute,
     private studentService: StudentService
   ) {}
 
   ngOnInit(): void {
+    this.userId = this.route.snapshot.paramMap.get('userId');
     this.studentForm = this.formBuilder.group({
       student_id: ['', Validators.required],
       student_name: ['', Validators.required],
@@ -40,12 +43,12 @@ export class StudentComponent implements OnInit {
         studentGender: this.studentForm.value.student_gender,
       };
       this.studentService.addStudent(studentData).subscribe(
-        response => {
+        (response) => {
           console.log('Student added:', response);
           alert('Successfully added Student details');
-          this.router.navigate(['/college']);
+          this.router.navigate(['/college', this.userId]);
         },
-        error => {
+        (error) => {
           console.error('Error adding student:', error);
         }
       );

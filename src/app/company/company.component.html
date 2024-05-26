@@ -3,41 +3,41 @@
       <h2 class="card-title text-center mb-4">Company Form</h2>
       <form [formGroup]="companyForm" (ngSubmit)="addCompany()" novalidate>
         <div class="form-group">
-          <label for="company_id">Company ID:</label>
-          <input type="number" id="company_id" formControlName="company_id" class="form-control" placeholder="Enter company ID" required />
-          <div *ngIf="companyForm.controls['company_id'].errors && companyForm.controls['company_id'].touched" class="invalid-feedback d-block">
+          <label for="companyId">Company ID:</label>
+          <input type="number" id="companyId" formControlName="companyId" class="form-control" placeholder="Enter company ID" required />
+          <div *ngIf="companyForm.controls['companyId'].errors && companyForm.controls['companyId'].touched" class="invalid-feedback d-block">
             Company ID is required.
           </div>
         </div>
   
         <div class="form-group">
-          <label for="company_type">Company Type:</label>
-          <input type="text" id="company_type" formControlName="company_type" class="form-control" placeholder="Enter company type" required />
-          <div *ngIf="companyForm.controls['company_type'].errors && companyForm.controls['company_type'].touched" class="invalid-feedback d-block">
+          <label for="companyType">Company Type:</label>
+          <input type="text" id="companyType" formControlName="companyType" class="form-control" placeholder="Enter company type" required />
+          <div *ngIf="companyForm.controls['companyType'].errors && companyForm.controls['companyType'].touched" class="invalid-feedback d-block">
             Company Type is required.
           </div>
         </div>
   
         <div class="form-group">
-          <label for="company_name">Company Name:</label>
-          <input type="text" id="company_name" formControlName="company_name" class="form-control" placeholder="Enter company name" required />
-          <div *ngIf="companyForm.controls['company_name'].errors && companyForm.controls['company_name'].touched" class="invalid-feedback d-block">
+          <label for="companyName">Company Name:</label>
+          <input type="text" id="companyName" formControlName="companyName" class="form-control" placeholder="Enter company name" required />
+          <div *ngIf="companyForm.controls['companyName'].errors && companyForm.controls['companyName'].touched" class="invalid-feedback d-block">
             Company Name is required.
           </div>
         </div>
   
         <div class="form-group">
-          <label for="company_description">Company Description:</label>
-          <textarea id="company_description" formControlName="company_description" class="form-control" placeholder="Enter company description" required></textarea>
-          <div *ngIf="companyForm.controls['company_description'].errors && companyForm.controls['company_description'].touched" class="invalid-feedback d-block">
+          <label for="companyDescription">Company Description:</label>
+          <textarea id="companyDescription" formControlName="companyDescription" class="form-control" placeholder="Enter company description" required></textarea>
+          <div *ngIf="companyForm.controls['companyDescription'].errors && companyForm.controls['companyDescription'].touched" class="invalid-feedback d-block">
             Company Description is required.
           </div>
         </div>
   
         <div class="form-group">
-          <label for="company_address">Company Address:</label>
-          <input type="text" id="company_address" formControlName="company_address" class="form-control" placeholder="Enter company address" required />
-          <div *ngIf="companyForm.controls['company_address'].errors && companyForm.controls['company_address'].touched" class="invalid-feedback d-block">
+          <label for="companyAddress">Company Address:</label>
+          <input type="text" id="companyAddress" formControlName="companyAddress" class="form-control" placeholder="Enter company address" required />
+          <div *ngIf="companyForm.controls['companyAddress'].errors && companyForm.controls['companyAddress'].touched" class="invalid-feedback d-block">
             Company Address is required.
           </div>
         </div>

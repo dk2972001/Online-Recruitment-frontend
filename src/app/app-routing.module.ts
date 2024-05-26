@@ -14,6 +14,7 @@ import { JobDetailsComponent } from './job-details/job-details.component';
 import { EmployerComponent } from './employer/employer.component';
 import { JobComponent } from './job/job.component';
 import { CompanyComponent } from './company/company.component';
+import { AppointmentSchComponent } from './appointment-sch/appointment-sch.component';
 // Import other components you want to route to
 
 const routes: Routes = [
@@ -25,13 +26,14 @@ const routes: Routes = [
   { path: 'otpverification', component: OtpVerificationComponent },
   { path: 'resetpassword', component: ResetpasswordComponent },
   { path: 'job-availability', component: JobAvailabilityComponent },
-  { path: 'student', component: StudentComponent },
-  { path: 'college', component: CollegeComponent },
-  { path: 'job-list', component: JobListComponent },
+  { path: 'student/:userId', component: StudentComponent },
+  { path: 'college/:userId', component: CollegeComponent },
+  { path: 'job-list/:userId', component: JobListComponent },
   { path: 'job-details/:jobId', component: JobDetailsComponent },
-  { path: 'employer', component: EmployerComponent },
-  { path: 'job', component: JobComponent },
-  { path: 'company', component: CompanyComponent },
+  { path: 'employer/:userId', component: EmployerComponent },
+  { path: 'job/:userId', component: JobComponent },
+  { path: 'appointment-sch', component: AppointmentSchComponent},
+  { path: 'company/:userId', component: CompanyComponent },
 ];
 
 @NgModule({

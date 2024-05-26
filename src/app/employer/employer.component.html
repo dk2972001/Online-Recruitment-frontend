@@ -3,17 +3,17 @@
       <h2 class="card-title text-center mb-4">Employer Form</h2>
       <form [formGroup]="employerForm" (ngSubmit)="addEmployer()" novalidate>
         <div class="form-group">
-          <label for="employer_id">Employer ID:</label>
+          <label for="employerId">Employer ID:</label>
           <input
             type="number"
-            id="employer_id"
-            formControlName="employer_id"
+            id="employerId"
+            formControlName="employerId"
             class="form-control"
             placeholder="Enter employer ID"
             required
           />
           <div
-            *ngIf="employerForm.controls['employer_id'].errors && employerForm.controls['employer_id'].touched"
+            *ngIf="employerForm.controls['employerId'].errors && employerForm.controls['employerId'].touched"
             class="invalid-feedback d-block"
           >
             Employer ID is required.
@@ -21,17 +21,17 @@
         </div>
   
         <div class="form-group">
-          <label for="employer_name">Employer Name:</label>
+          <label for="employerName">Employer Name:</label>
           <input
             type="text"
-            id="employer_name"
-            formControlName="employer_name"
+            id="employerName"
+            formControlName="employerName"
             class="form-control"
             placeholder="Enter employer name"
             required
           />
           <div
-            *ngIf="employerForm.controls['employer_name'].errors && employerForm.controls['employer_name'].touched"
+            *ngIf="employerForm.controls['employerName'].errors && employerForm.controls['employerName'].touched"
             class="invalid-feedback d-block"
           >
             Employer Name is required.
@@ -39,17 +39,17 @@
         </div>
   
         <div class="form-group">
-          <label for="employer_post">Post:</label>
+          <label for="employerPost">Post:</label>
           <input
             type="text"
-            id="employer_post"
-            formControlName="employer_post"
+            id="employerPost"
+            formControlName="employerPost"
             class="form-control"
             placeholder="Enter post"
             required
           />
           <div
-            *ngIf="employerForm.controls['employer_post'].errors && employerForm.controls['employer_post'].touched"
+            *ngIf="employerForm.controls['employerPost'].errors && employerForm.controls['employerPost'].touched"
             class="invalid-feedback d-block"
           >
             Post is required.
@@ -57,17 +57,17 @@
         </div>
   
         <div class="form-group">
-          <label for="employer_address">Address:</label>
+          <label for="employerAddress">Address:</label>
           <input
             type="text"
-            id="employer_address"
-            formControlName="employer_address"
+            id="employerAddress"
+            formControlName="employerAddress"
             class="form-control"
             placeholder="Enter address"
             required
           />
           <div
-            *ngIf="employerForm.controls['employer_address'].errors && employerForm.controls['employer_address'].touched"
+            *ngIf="employerForm.controls['employerAddress'].errors && employerForm.controls['employerAddress'].touched"
             class="invalid-feedback d-block"
           >
             Address is required.
@@ -75,17 +75,17 @@
         </div>
   
         <div class="form-group">
-          <label for="employer_mobile">Mobile:</label>
+          <label for="employerMobile">Mobile:</label>
           <input
             type="tel"
-            id="employer_mobile"
-            formControlName="employer_mobile"
+            id="employerMobile"
+            formControlName="employerMobile"
             class="form-control"
             placeholder="Enter mobile number"
             required
           />
           <div
-            *ngIf="employerForm.controls['employer_mobile'].errors && employerForm.controls['employer_mobile'].touched"
+            *ngIf="employerForm.controls['employerMobile'].errors && employerForm.controls['employerMobile'].touched"
             class="invalid-feedback d-block"
           >
             Mobile number is required.
@@ -93,17 +93,17 @@
         </div>
   
         <div class="form-group">
-          <label for="employer_email">Email:</label>
+          <label for="employerEmail">Email:</label>
           <input
             type="email"
-            id="employer_email"
-            formControlName="employer_email"
+            id="employerEmail"
+            formControlName="employerEmail"
             class="form-control"
             placeholder="Enter email"
             required
           />
           <div
-            *ngIf="employerForm.controls['employer_email'].errors && employerForm.controls['employer_email'].touched"
+            *ngIf="employerForm.controls['employerEmail'].errors && employerForm.controls['employerEmail'].touched"
             class="invalid-feedback d-block"
           >
             Email is required.

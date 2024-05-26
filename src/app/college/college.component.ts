@@ -1,23 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { CollegeService } from '../college.service';
-import { College } from '../college.model';  // Ensure you have a College model
+import { Router, ActivatedRoute } from '@angular/router';
+import { CollegeService } from '../services/college.service';
+import { College } from '../models/college.model'; // Ensure you have a College model
 
 @Component({
   selector: 'app-college',
   templateUrl: './college.component.html',
-  styleUrls: ['./college.component.css']
+  styleUrls: ['./college.component.css'],
 })
-export class CollegeComponent {
+export class CollegeComponent implements OnInit {
   collegeForm!: FormGroup;
+  userId: any;
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
+    private route: ActivatedRoute,
     private collegeService: CollegeService
   ) {
     this.createForm();
+  }
+
+  ngOnInit(): void {
+    this.userId = this.route.snapshot.paramMap.get('userId');
   }
 
   createForm() {
@@ -38,16 +44,16 @@ export class CollegeComponent {
         collegeId: this.collegeForm.value.college_id,
         collegeName: this.collegeForm.value.college_name,
         collegeAddress: this.collegeForm.value.college_address,
-        collegeDescp: this.collegeForm.value.college_description
+        collegeDescp: this.collegeForm.value.college_description,
       };
 
       this.collegeService.addCollege(collegeData).subscribe(
-        response => {
+        (response) => {
           console.log('College added:', response);
           alert('Successfully Added College Details');
           this.redirectToJobsList();
         },
-        error => {
+        (error) => {
           console.error('Error adding college:', error);
         }
       );
@@ -55,7 +61,7 @@ export class CollegeComponent {
   }
 
   redirectToJobsList() {
-    this.router.navigate(['/job-list']);
+    this.router.navigate(['/job-list', this.userId]);
   }
 
   navigateBack() {

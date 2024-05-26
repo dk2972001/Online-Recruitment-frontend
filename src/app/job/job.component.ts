@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { JobService } from '../services/job.service';
+import { Job } from '../models/job.model';
 
 @Component({
   selector: 'app-job',
@@ -9,10 +11,17 @@ import { Router } from '@angular/router';
 })
 export class JobComponent implements OnInit {
   jobForm!: FormGroup;
+  userId: any;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute,
+    private jobService: JobService
+  ) {}
 
   ngOnInit(): void {
+    this.userId = this.route.snapshot.paramMap.get('userId');
     this.jobForm = this.formBuilder.group({
       job_id: ['', Validators.required],
       job_name: ['', Validators.required],
@@ -25,16 +34,32 @@ export class JobComponent implements OnInit {
 
   addJob() {
     if (this.jobForm.valid) {
-      console.log('Job added:', this.jobForm.value);
-      alert('Added new Job');
-      this.proceedingToJobList();
+      const job = new Job(
+        this.jobForm.value.job_id,
+        this.jobForm.value.job_name,
+        this.jobForm.value.salary,
+        this.jobForm.value.job_type,
+        this.jobForm.value.job_description,
+        this.jobForm.value.job_vacancy
+      );
+
+      this.jobService.addJob(job).subscribe(
+        (data) => {
+          console.log('Job added:', data);
+          alert('Added new Job');
+          this.proceedingToJobList();
+        },
+        (error) => {
+          console.log('Error:', error);
+        }
+      );
     } else {
       console.log('Form is not valid');
     }
   }
 
   proceedingToJobList() {
-    this.router.navigate(['/job-list']);
+    this.router.navigate(['/job-list', this.userId]);
   }
 
   navigateBack() {

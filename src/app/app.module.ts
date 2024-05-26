@@ -19,7 +19,7 @@ import { OtpVerificationComponent } from './otp-verification/otp-verification.co
 import { EmailService } from './signup/Email.service';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { JobAvailabilityComponent } from './job-availability/job-availability.component';
-import { SignupService } from './signup.service';
+import { SignupService } from './services/signup.service';
 import { HttpClientModule, HttpClient, withFetch } from '@angular/common/http';
 import { provideHttpClient } from '@angular/common/http';
 import { CollegeComponent } from './college/college.component';
@@ -30,6 +30,7 @@ import { JobDetailsComponent } from './job-details/job-details.component';
 import { EmployerComponent } from './employer/employer.component';
 import { JobComponent } from './job/job.component';
 import { CompanyComponent } from './company/company.component';
+import { AppointmentSchComponent } from './appointment-sch/appointment-sch.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { CompanyComponent } from './company/company.component';
     EmployerComponent,
     JobComponent,
     CompanyComponent,
+    AppointmentSchComponent,
     // Declare LoginComponent here
   ],
   imports: [
@@ -64,7 +66,10 @@ import { CompanyComponent } from './company/company.component';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [EmailService, SignupService, provideHttpClient(), 
+  providers: [
+    EmailService,
+    SignupService,
+    provideHttpClient(),
     // { provide: HttpClient, useFactory: () => provideHttpClient(withFetch()) }
   ],
   bootstrap: [AppComponent],

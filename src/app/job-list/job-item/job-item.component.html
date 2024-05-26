@@ -17,7 +17,10 @@
       <p class="job-skill"><b>Description : </b>{{ jobDescription }}</p>
     </div>
     <div class="width-100">
-      <a [routerLink]="['/job-details', jobId]" class="job-apply-button"
+      <a
+        [routerLink]="['/job-details', jobId]"
+        class="job-apply-button"
+        [attr.disabled]="enableApply ? null : ''"
         >Apply Now</a
       >
     </div>

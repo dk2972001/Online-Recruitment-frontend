@@ -13,4 +13,5 @@ export class JobItemComponent {
   @Input() jobDescription: string = '';
   @Input() jobVaccancy: string = '';
   @Input() applyLink: string = '';
+  @Input() enableApply:boolean = false;
 }
