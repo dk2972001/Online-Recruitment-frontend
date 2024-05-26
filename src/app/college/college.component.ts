@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { CollegeService } from '../services/college.service';
 import { College } from '../models/college.model'; // Ensure you have a College model
 
@@ -9,15 +9,21 @@ import { College } from '../models/college.model'; // Ensure you have a College 
   templateUrl: './college.component.html',
   styleUrls: ['./college.component.css'],
 })
-export class CollegeComponent {
+export class CollegeComponent implements OnInit {
   collegeForm!: FormGroup;
+  userId: any;
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
+    private route: ActivatedRoute,
     private collegeService: CollegeService
   ) {
     this.createForm();
+  }
+
+  ngOnInit(): void {
+    this.userId = this.route.snapshot.paramMap.get('userId');
   }
 
   createForm() {
@@ -55,7 +61,7 @@ export class CollegeComponent {
   }
 
   redirectToJobsList() {
-    this.router.navigate(['/job-list']);
+    this.router.navigate(['/job-list', this.userId]);
   }
 
   navigateBack() {

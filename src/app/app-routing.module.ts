@@ -28,7 +28,7 @@ const routes: Routes = [
   { path: 'job-availability', component: JobAvailabilityComponent },
   { path: 'student/:userId', component: StudentComponent },
   { path: 'college/:userId', component: CollegeComponent },
-  { path: 'job-list', component: JobListComponent },
+  { path: 'job-list/:userId', component: JobListComponent },
   { path: 'job-details/:jobId', component: JobDetailsComponent },
   { path: 'employer/:userId', component: EmployerComponent },
   { path: 'job/:userId', component: JobComponent },
