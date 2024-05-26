@@ -1,49 +1,96 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SignupService } from '../services/signup.service';
+import { User } from '../models/User.model';
+import { Role } from '../models/Role.model';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
-export class LoginComponent {
-  "username": string = '';
-  "password": string = '';
+export class LoginComponent implements OnInit {
+  'userName': string = '';
+  'password': string = '';
   showUniqueIdInput: boolean = false;
-  uniqueId: string = '';
+  roleId: string = '';
+  email: string = '';
+  userList: User[] = [];
 
-email: any;
-selectedRole: any;
-  constructor(private router: Router) { }
+  constructor(private router: Router, private signupservice: SignupService) {}
 
-  onRoleChange() {
-    // Show the unique ID input box if "Employee" or "Student" is selected
-    this.showUniqueIdInput = this.selectedRole === 'emp' || this.selectedRole === 'std';
+  ngOnInit():void {
+    this.getUser();
   }
 
   login() {
-    // Here you can perform authentication logic
-    
+    this.getUser();
 
-    console.log('Username:', this['username']);
+    console.log('Username:', this['userName']);
+    console.log('Email:', this.email);
     console.log('Password:', this['password']);
-    if (this.selectedRole === 'std') {
-      this.navigateToJoblist();
-    } else {
-      this.navigateToPostjob();
-    }
+    console.log('UnqiueId:', this.roleId);
 
+    const user = this.userList.find(
+      (user) => user.email === this.email && user.password === this.password
+    );
+
+    if (user) {
+      if (this.roleId.slice(0, 3).toLowerCase() === 'std') {
+        this.navigateToStudent(this.getIdFromUserObject(user));
+      } else if (this.roleId.slice(0, 3).toLowerCase() === 'emp') {
+        this.navigateToEmployer(this.getIdFromUserObject(user));
+      } else {
+        alert('Invalid Role, Please try again.');
+        this.navigateToHome();
+      }
+    } else {
+      alert('User not found. please regsiter yourself.');
+      this.navigateToSignUp();
+    }
   }
+  getIdFromRoleStringifiedObject(user: string) {
+    return JSON.parse(JSON.stringify(user)).roleId;
+  }
+
+  getIdFromUserObject(user: User) {
+    return JSON.parse(JSON.stringify(user)).userId;
+  }
+
+  getUser() {
+    this.signupservice.getAllUsers().subscribe({
+      next: (userList) => {
+        this.userList = userList;
+        console.log('userList:', this.userList);
+      },
+      error: (error) => {
+        console.error('Error fetching the users:', error);
+      },
+    });
+  }
+
+  navigateToHome() {
+    this.router.navigate(['/']);
+  }
+
   navigateToSignUp() {
     this.router.navigate(['/signup']);
   }
 
-  navigateToPostjob(){
+  navigateToPostjob() {
     this.router.navigate(['/job']);
   }
 
-  navigateToJoblist(){
+  navigateToJoblist() {
     this.router.navigate(['/job-list']);
+  }
+
+  navigateToStudent(userId: number | undefined) {
+    this.router.navigate(['/student', userId]);
+  }
+
+  navigateToEmployer(userId: number | undefined) {
+    this.router.navigate(['/employer', userId]);
   }
 }

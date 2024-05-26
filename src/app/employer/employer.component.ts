@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { EmployerService } from '../services/employer.service'; 
 import { Employer } from '../models/employer.model';
 
@@ -11,14 +11,17 @@ import { Employer } from '../models/employer.model';
 })
 export class EmployerComponent implements OnInit {
   employerForm!: FormGroup;
+  userId:any;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private employerService: EmployerService
+    private employerService: EmployerService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+    this.userId = this.route.snapshot.paramMap.get('userId');
     this.employerForm = this.formBuilder.group({
       employerId: ['', Validators.required],
       employerName: ['', Validators.required],
@@ -50,7 +53,7 @@ export class EmployerComponent implements OnInit {
   }
 
   proceedingToCompany() {
-    this.router.navigate(['/company']);
+    this.router.navigate(['/company', this.userId]);
   }
 
   navigateBack() {

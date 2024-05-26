@@ -3,54 +3,100 @@
     <div class="col-md-4">
       <div class="card shadow animate__animated animate__bounceInDown">
         <div class="card-body">
-          <button class="btn btn-link position-absolute top-0 end-0 mt-2 me-2" routerLink="/">Home</button>
+          <button
+            class="btn btn-link position-absolute top-0 end-0 mt-2 me-2"
+            routerLink="/"
+          >
+            Home
+          </button>
           <h2 class="card-title text-center mb-4">Login</h2>
-          <form (ngSubmit)="login()" #loginForm="ngForm" class="animate__animated animate__fadeInUp">
+          <form
+            (ngSubmit)="login()"
+            #loginForm="ngForm"
+            class="animate__animated animate__fadeInUp"
+          >
             <div class="mb-3">
-            
-                <label for="email" class="form-label">Email</label>
-                <input type="email"  name="email" [(ngModel)]="email" 
-                required email class="form-control" placeholder="Enter your email">
-         <div *ngIf="loginForm.controls['email']?.touched && loginForm.controls['email']?.invalid" class="invalid-feedback d-block">
-           <div *ngIf="loginForm.controls['email']?.errors?.['required']">Email is required.</div>
-           <div *ngIf="loginForm.controls['email']?.errors?.['email']">Invalid email format.</div>
-      </div>
-  
+              <label for="email" class="form-label">Email</label>
+              <input
+                type="email"
+                name="email"
+                [(ngModel)]="email"
+                required
+                email
+                class="form-control"
+                placeholder="Enter your email"
+              />
+              <div
+                *ngIf="
+                  loginForm.controls['email']?.touched &&
+                  loginForm.controls['email']?.invalid
+                "
+                class="invalid-feedback d-block"
+              >
+                <div *ngIf="loginForm.controls['email']?.errors?.['required']">
+                  Email is required.
+                </div>
+                <div *ngIf="loginForm.controls['email']?.errors?.['email']">
+                  Invalid email format.
+                </div>
+              </div>
             </div>
             <div class="mb-3">
               <label for="password" class="form-label">Password</label>
-              <input type="password" id="password" name="password" [(ngModel)]="password" 
-                     required minlength="6" class="form-control" placeholder="Enter your password">
-              <div *ngIf="loginForm.controls['password']?.touched && loginForm.controls['password']?.invalid" class="invalid-feedback d-block">
-                <div *ngIf="loginForm.controls['password']?.errors?.['required']">Password is required.</div>
-                <div *ngIf="loginForm.controls['password']?.errors?.['minlength']">Password must be at least 6 characters.</div>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                [(ngModel)]="password"
+                required
+                minlength="6"
+                class="form-control"
+                placeholder="Enter your password"
+              />
+              <div
+                *ngIf="
+                  loginForm.controls['password']?.touched &&
+                  loginForm.controls['password']?.invalid
+                "
+                class="invalid-feedback d-block"
+              >
+                <div
+                  *ngIf="loginForm.controls['password']?.errors?.['required']"
+                >
+                  Password is required.
+                </div>
+                <div
+                  *ngIf="loginForm.controls['password']?.errors?.['minlength']"
+                >
+                  Password must be at least 6 characters.
+                </div>
               </div>
 
-              
-            <div class="mb-3">
-              <label for="role" class="form-label">Role</label>
-              <select id="role" name="role" [(ngModel)]="selectedRole" (change)="onRoleChange()" class="form-select">
-                <option value="" disabled selected>Select Role</option>
-                <option value="emp">EMP</option>
-                <option value="std">STD</option>
-              </select>
-            </div>
+              <!-- Unique ID input box -->
+              <div class="mb-3">
+                <label for="roleId" class="form-label">RoleID</label>
+                <input
+                  type="text"
+                  id="roleId"
+                  name="roleId"
+                  [(ngModel)]="roleId"
+                  class="form-control"
+                  placeholder="Enter your RoleID"
+                />
+              </div>
 
-            <!-- Unique ID input box -->
-            <div *ngIf="showUniqueIdInput" class="mb-3">
-              <label for="uniqueId" class="form-label">RoleID</label>
-              <input type="text" id="uniqueId" name="uniqueId" [(ngModel)]="uniqueId" class="form-control" placeholder="Enter your RoleID">
-            </div>
-
-              <p class="forgot-password"><a routerLink="/forgotpassword">Forgot Password</a></p>
+              <p class="forgot-password">
+                <a routerLink="/forgotpassword">Forgot Password</a>
+              </p>
               <p>Don't have an account? <a routerLink="/signup">Sign Up</a></p>
             </div>
-            
-
-           
-
-
-            <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary btn-block d-block mx-auto btn-block custom-button">Login</button>
+            <button
+              type="submit"
+              [disabled]="loginForm.invalid"
+              class="btn btn-primary btn-block d-block mx-auto btn-block custom-button"
+            >
+              Login
+            </button>
           </form>
         </div>
       </div>
