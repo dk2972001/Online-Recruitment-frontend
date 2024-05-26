@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Company } from '../models/company.model';
 
@@ -7,7 +7,7 @@ import { Company } from '../models/company.model';
   providedIn: 'root',
 })
 export class CompanyService {
-  private apiUrl = 'http://localhost:4200/company';
+  private apiUrl = 'http://localhost:8080/company';
 
   constructor(private http: HttpClient) {}
 

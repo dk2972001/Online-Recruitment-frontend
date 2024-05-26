@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CompanyService } from '../services/company.service';
+import { Company } from '../models/company.model';
 
 @Component({
   selector: 'app-company',
@@ -10,30 +12,41 @@ import { Router } from '@angular/router';
 export class CompanyComponent implements OnInit {
   companyForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private companyService: CompanyService
+  ) {}
 
   ngOnInit(): void {
     this.companyForm = this.formBuilder.group({
-      company_id: ['', Validators.required],
-      company_type: ['', Validators.required],
-      company_name: ['', Validators.required],
-      company_description: ['', Validators.required],
-      company_address: ['', Validators.required],
+      companyId: ['', Validators.required],
+      companyType: ['', Validators.required],
+      companyName: ['', Validators.required],
+      companyDescription: ['', Validators.required],
+      companyAddress: ['', Validators.required],
     });
   }
 
   addCompany() {
     if (this.companyForm.valid) {
-      console.log('Company added:', this.companyForm.value);
-      alert('login successful');
-      // this.proceedingToJobs();
-      this.navigateToLogin();
-
+      const company:Company = this.companyForm.value;
+      this.companyService.addCompany(company).subscribe(
+        (data) => {
+          console.log('Company added:', data);
+          alert('Company added successfully');
+          this.navigateToLogin();
+        },
+        (error) => {
+          console.log('Error:', error);
+        }
+      );
     } else {
       console.log('Form is not valid');
     }
   }
-navigateToLogin() {
+
+  navigateToLogin() {
     // Navigate to the login page
     this.router.navigate(['/login']);
   }
