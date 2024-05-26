@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { JobService } from '../services/job.service';
+import { Job } from '../models/job.model';
 
 @Component({
   selector: 'app-job',
@@ -10,7 +12,11 @@ import { Router } from '@angular/router';
 export class JobComponent implements OnInit {
   jobForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private jobService: JobService
+  ) {}
 
   ngOnInit(): void {
     this.jobForm = this.formBuilder.group({
@@ -25,9 +31,25 @@ export class JobComponent implements OnInit {
 
   addJob() {
     if (this.jobForm.valid) {
-      console.log('Job added:', this.jobForm.value);
-      alert('Added new Job');
-      // this.proceedingToJobList();
+      const job = new Job(
+        this.jobForm.value.job_id,
+        this.jobForm.value.job_name,
+        this.jobForm.value.salary,
+        this.jobForm.value.job_type,
+        this.jobForm.value.job_description,
+        this.jobForm.value.job_vacancy
+      );
+
+      this.jobService.addJob(job).subscribe(
+        (data) => {
+          console.log('Job added:', data);
+          alert('Added new Job');
+          this.proceedingToJobList();
+        },
+        (error) => {
+          console.log('Error:', error);
+        }
+      );
     } else {
       console.log('Form is not valid');
     }
