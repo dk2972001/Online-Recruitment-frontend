@@ -1,24 +1,23 @@
-<!-----RECENT JOB SECTION RECENT JOB SECTION RECENT JOB SECTION ----->
-<!-----META SECTION----->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Search Job</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-  </head>
-  <body>
-    <div class="width-100 recent-job">
-      <div class="container">
-        <h2 class="recent-job-heading">RECENT JOB</h2>
-        <p class="recent-job-sub-heading">Get the list of all recent jobs</p>
-        <!-----JOB LIST----->
+<head>
+  <title>Search Job</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+</head>
+<body>
+  <div class="width-100 recent-job">
+    <div class="container">
+      <h2 class="recent-job-heading">RECENT JOB</h2>
+      <p class="recent-job-sub-heading">Get the list of all recent jobs</p>
+      <!-----JOB LIST----->
+      <div *ngIf="jobsList.length > 0; else noJobs">
         <app-job-item
-          *ngFor="let job of jobs"
+          *ngFor="let job of jobsList"
           [jobId]="jobId"
           [jobName]="job.jobName"
           [salary]="job.salary"
@@ -28,6 +27,10 @@
           [enableApply]="enableApply"
         ></app-job-item>
       </div>
+      <ng-template #noJobs>
+        <p>No jobs available at the moment.</p>
+      </ng-template>
     </div>
-  </body>
+  </div>
+</body>
 </html>
