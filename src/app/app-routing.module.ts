@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminComponent } from './admin/admin.component';
+import { EmpDashboardComponent } from './emp-dashboard/emp-dashboard.component';
+import { JobseekerDashboardComponent } from './jobseeker-dashboard/jobseeker-dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -19,6 +22,12 @@ import { AppointmentSchComponent } from './appointment-sch/appointment-sch.compo
 
 const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' }, // Redirect to the login page by default
+  {path: 'admin', component: AdminComponent, children:[
+    {path: 'emp-dashboard', component: EmpDashboardComponent},
+  {path: 'jobseeker-dashboard', component: JobseekerDashboardComponent}
+  ]
+  },
+  
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'welcome', component: WelcomeComponent },

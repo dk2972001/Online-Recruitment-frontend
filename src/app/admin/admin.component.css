@@ -1,0 +1,12 @@
+/* Styles for the admin component */
+mat-tab-group {
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    border-radius: 8px;
+  }
+  
+  mat-tab-group::ng-deep .mat-tab-body-content {
+    padding: 16px;
+  }
+  

@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'; // Import FormsModule for template-driven forms
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component'; // Import your LoginComponent
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -31,6 +32,10 @@ import { EmployerComponent } from './employer/employer.component';
 import { JobComponent } from './job/job.component';
 import { CompanyComponent } from './company/company.component';
 import { AppointmentSchComponent } from './appointment-sch/appointment-sch.component';
+import { AdminComponent } from './admin/admin.component';
+import { EmpDashboardComponent } from './emp-dashboard/emp-dashboard.component';
+import { JobseekerDashboardComponent } from './jobseeker-dashboard/jobseeker-dashboard.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -51,6 +56,9 @@ import { AppointmentSchComponent } from './appointment-sch/appointment-sch.compo
     JobComponent,
     CompanyComponent,
     AppointmentSchComponent,
+    AdminComponent,
+    EmpDashboardComponent,
+    JobseekerDashboardComponent,
     // Declare LoginComponent here
   ],
   imports: [
@@ -59,6 +67,7 @@ import { AppointmentSchComponent } from './appointment-sch/appointment-sch.compo
     BrowserModule,
     FormsModule, // Import FormsModule here
     BrowserAnimationsModule, // Add if not already imported
+    MatTabsModule,
     MatInputModule,
     MatButtonModule,
     MatFormFieldModule,
@@ -70,6 +79,7 @@ import { AppointmentSchComponent } from './appointment-sch/appointment-sch.compo
     EmailService,
     SignupService,
     provideHttpClient(),
+    provideAnimationsAsync(),
     // { provide: HttpClient, useFactory: () => provideHttpClient(withFetch()) }
   ],
   bootstrap: [AppComponent],

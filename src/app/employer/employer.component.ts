@@ -27,20 +27,27 @@ export class EmployerComponent implements OnInit {
       employerName: ['', Validators.required],
       employerPost: ['', Validators.required],
       employerAddress: ['', Validators.required],
-      employerMobile: [
-        '',
-        [Validators.required, Validators.pattern('^[0-9]+$')],
-      ],
+      employerMobile: ['',[Validators.required, Validators.pattern('^[0-9]+$')],],
       employerEmail: ['', [Validators.required, Validators.email]],
     });
   }
 
-  addEmployer() {
+  addEmployer() : void{
     if (this.employerForm.valid) {
-      const employer: Employer = this.employerForm.value;
-      this.employerService.addEmployer(employer).subscribe(
+      const employerData: Employer ={
+        employerId: this.employerForm.value.employerId,
+        employerName: this.employerForm.value.employerName,
+        employerAddress: this.employerForm.value.employerAddress,
+        employerEmail: this.employerForm.value.employerEmail,
+        employerMobile: this.employerForm.value.employerMobile,
+        employerPost: this.employerForm.value.employerPost
+
+      };
+
+      this.employerService.addEmployer(employerData).subscribe(
         (response) => {
           console.log('Employer added successfully', response);
+          alert('Successfully added Employer details');
           this.proceedingToCompany();
         },
         (error) => {
