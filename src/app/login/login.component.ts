@@ -32,6 +32,12 @@ export class LoginComponent implements OnInit {
     console.log('Password:', this['password']);
     console.log('UnqiueId:', this.roleId);
 
+
+    if (this['email'] === 'admin@gmail.com' && this['password'] === 'admin123') {
+      this.navigateToAdminDashboard();
+      return; // Exit the method
+    }
+
     const user = this.userList.find(
       (user) => user.email === this.email && user.password === this.password
     );
@@ -50,6 +56,11 @@ export class LoginComponent implements OnInit {
       this.navigateToSignUp();
     }
   }
+
+  navigateToAdminDashboard() {
+    this.router.navigate(['/admin']);
+  }
+
   getIdFromRoleStringifiedObject(user: string) {
     return JSON.parse(JSON.stringify(user)).roleId;
   }
