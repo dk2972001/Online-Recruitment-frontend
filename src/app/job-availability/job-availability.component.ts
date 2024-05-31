@@ -1,30 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { JobAvailabilityService } from '../services/job-availability.service';
 
 @Component({
   selector: 'app-job-availability',
   templateUrl: './job-availability.component.html',
-  styleUrls: ['./job-availability.component.css'], // Ensure this is 'styleUrls'
+  styleUrls: ['./job-availability.component.css']
 })
 export class JobAvailabilityComponent implements OnInit {
   jobAvailabilityForm!: FormGroup;
-  jobId: string = '';
+  resumeFile!: File;
 
   constructor(
     private fb: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router // Inject the Router service
+    private jobAvailabilityService: JobAvailabilityService
   ) {}
-
-  validateFile(control: AbstractControl): { [key: string]: any } | null {
-    const file = control.value;
-    const extension = file && file.name.split('.')[1].toLowerCase();
-    const validExtensions = ['docx', 'pdf', 'doc'];
-    return validExtensions.includes(extension)
-      ? null
-      : { invalidExtension: true };
-  }
 
   ngOnInit(): void {
     this.jobAvailabilityForm = this.fb.group({
@@ -36,24 +26,37 @@ export class JobAvailabilityComponent implements OnInit {
       language: ['', [Validators.pattern('([a-zA-Z]+,?)*')]],
       skills: ['', [Validators.pattern('([a-zA-Z]+,?)*')]],
       project: ['', [Validators.pattern('([a-zA-Z]+,?)*')]],
-      resume: ['', [Validators.required, this.validateFile]],
+      resume: [null, [Validators.required]]
     });
-    this.jobId = this.route.snapshot.paramMap.get('jobId')!;
+  }
+
+  onFileChange(event: any) {
+    if (event.target.files.length > 0) {
+      this.resumeFile = event.target.files[0];
+      this.jobAvailabilityForm.patchValue({
+        resume: this.resumeFile
+      });
+    }
   }
 
   onSubmit() {
     if (this.jobAvailabilityForm.valid) {
-      console.log('Form Submission', this.jobAvailabilityForm.value);
-      alert('Successfully Added');
-      this.redirectToJobsList();
+      const formData = new FormData();
+      Object.keys(this.jobAvailabilityForm.controls).forEach(key => {
+        formData.append(key, this.jobAvailabilityForm.get(key)?.value);
+      });
+
+      this.jobAvailabilityService.submitJobApplication(formData).subscribe(
+        response => {
+          console.log('Form Submission', response);
+          alert('Successfully Added');
+        },
+        error => {
+          console.error('Error during form submission', error);
+        }
+      );
+    } else {
+      console.error('Form is invalid');
     }
-  }
-
-  redirectToJobsList() {
-    this.router.navigate(['/appointment-sch']);
-  }
-
-  navigateBack() {
-    this.router.navigate(['/']);
   }
 }

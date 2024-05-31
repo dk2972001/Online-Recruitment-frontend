@@ -1,4 +1,4 @@
-<div class="container" id="job-availability-container">
+<!-- <div class="container" id="job-availability-container">
   <div class="row justify-content-center align-items-center vh-100">
     <div class="col-md-4 w-100">
       <div class="card shadow animate__animated animate__bounceInDown">
@@ -247,6 +247,278 @@
                 </div>
               </div>
 
+            </div>
+
+            <div class="d-grid gap-2 p-3">
+              <button
+                type="submit"
+                [disabled]="jobAvailabilityForm.invalid"
+                class="btn btn-primary"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ -->
+
+
+
+
+
+
+
+ <div class="container" id="job-availability-container">
+  <div class="row justify-content-center align-items-center vh-100">
+    <div class="col-md-4 w-100">
+      <div class="card shadow animate__animated animate__bounceInDown">
+        <div class="card-body">
+          <button
+            class="btn btn-link position-absolute top-0 end-0 mt-2 me-2"
+            routerLink="/"
+          >
+            Home
+          </button>
+          <h2 class="card-title text-center mb-4">Job Availability</h2>
+          <form [formGroup]="jobAvailabilityForm" (ngSubmit)="onSubmit()">
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <div class="mb-3">
+                    <label for="name" class="form-label">Your Name *</label>
+                    <input
+                      type="text"
+                      formControlName="name"
+                      class="form-control"
+                      placeholder="Enter your name"
+                    />
+                    <div
+                      *ngIf="
+                        jobAvailabilityForm.controls['name']?.touched &&
+                        jobAvailabilityForm.controls['name']?.invalid
+                      "
+                      class="invalid-feedback d-block"
+                    >
+                      <div
+                        *ngIf="jobAvailabilityForm.controls['name']?.errors?.['required']"
+                      >
+                        Name is required.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Email *</label>
+                    <input
+                      type="email"
+                      name="email"
+                      id="email"
+                      class="form-control"
+                      placeholder="Enter your email"
+                      formControlName="email"
+                    />
+                    <div
+                      *ngIf="
+                        jobAvailabilityForm.controls['email']?.touched &&
+                        jobAvailabilityForm.controls['email']?.invalid
+                      "
+                      class="invalid-feedback d-block"
+                    >
+                      <div
+                        *ngIf="jobAvailabilityForm.controls['email']?.errors?.['required']"
+                      >
+                        Email is required.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col">
+                  <div class="mb-3">
+                    <label for="phoneno" class="form-label">Phone No</label>
+                    <input
+                      type="tel"
+                      name="phoneno"
+                      id="phoneno"
+                      formControlName="phoneno"
+                      class="form-control"
+                      placeholder="Enter your phone no"
+                    />
+                    <div
+                      *ngIf="
+                        jobAvailabilityForm.controls['phoneno']?.touched &&
+                        jobAvailabilityForm.controls['phoneno']?.hasError(
+                          'pattern'
+                        )
+                      "
+                      class="invalid-feedback d-block"
+                    >
+                      Please Enter valid Phone No.
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="mb-3">
+                    <label for="yearofpassing" class="form-label"
+                      >Year Of Passing *</label
+                    >
+                    <input
+                      type="date"
+                      name="yearofpassing"
+                      id="yearofpassing"
+                      class="form-control"
+                      formControlName="yearofpassing"
+                    />
+                    <div
+                      *ngIf="
+                        jobAvailabilityForm.controls['yearofpassing']
+                          ?.touched &&
+                        jobAvailabilityForm.controls['yearofpassing']?.invalid
+                      "
+                      class="invalid-feedback d-block"
+                    >
+                      <div
+                        *ngIf="jobAvailabilityForm.controls['yearofpassing']?.errors?.['required']"
+                      >
+                        Year Of Passing is required.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="mb-3">
+                    <label for="percentage" class="form-label"
+                      >Percentage *</label
+                    >
+                    <input
+                      type="number"
+                      name="percentage"
+                      id="percentage"
+                      class="form-control"
+                      formControlName="percentage"
+                      placeholder="Enter your percentage"
+                    />
+                    <div
+                      *ngIf="
+                        jobAvailabilityForm.controls['percentage']?.touched &&
+                        jobAvailabilityForm.controls['percentage']?.invalid
+                      "
+                      class="invalid-feedback d-block"
+                    >
+                      Please Enter valid Percentage.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row pt-3">
+                <div class="col">
+                  <div class="mb-3">
+                    <label for="language" class="form-label">Language</label>
+                    <input
+                      type="text"
+                      name="language"
+                      id="language"
+                      formControlName="language"
+                      class="form-control"
+                      placeholder="Enter your language (separated by comma)"
+                    />
+                    <div
+                      *ngIf="
+                        jobAvailabilityForm.controls['language']?.touched &&
+                        jobAvailabilityForm.controls['language']?.hasError(
+                          'pattern'
+                        )
+                      "
+                      class="invalid-feedback d-block"
+                    >
+                      Please Enter Languages in valid format.
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="mb-3">
+                    <label for="skills" class="form-label">Key Skills</label>
+                    <input
+                      type="text"
+                      name="skills"
+                      id="skills"
+                      formControlName="skills"
+                      class="form-control"
+                      placeholder="Enter your key skills (separated by comma)"
+                    />
+                    <div
+                      *ngIf="
+                        jobAvailabilityForm.controls['skills']?.touched &&
+                        jobAvailabilityForm.controls['skills']?.hasError(
+                          'pattern'
+                        )
+                      "
+                      class="invalid-feedback d-block"
+                    >
+                      Please Enter Skills in valid format.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row pt-3">
+                <div class="col">
+                  <div class="mb-3">
+                    <label for="project" class="form-label">Project</label>
+                    <input
+                      type="text"
+                      name="project"
+                      id="project"
+                      class="form-control"
+                      formControlName="project"
+                      placeholder="Enter your project (separated by comma)"
+                    />
+                    <div
+                      *ngIf="
+                        jobAvailabilityForm.controls['project']?.touched &&
+                        jobAvailabilityForm.controls['project']?.invalid
+                      "
+                      class="invalid-feedback d-block"
+                    >
+                      Please Enter Project in valid format.
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="mb-3">
+                    <label for="resume" class="form-label"
+                      >Upload your Resume *</label
+                    >
+                    <input
+                      type="file"
+                      name="resume"
+                      id="resume"
+                      class="form-control"
+                      (change)="onFileChange($event)"
+                      accept=".doc,.docx,.pdf"
+                    />
+                    <small class="p-2"
+                      >Only .doc, .docx, .pdf files are allowed</small
+                    >
+                    <div
+                      *ngIf="
+                        jobAvailabilityForm.controls['resume'].touched &&
+                        jobAvailabilityForm.controls['resume'].invalid
+                      "
+                      class="invalid-feedback d-block"
+                    >
+                      Invalid file extension. Only 'docx', 'pdf', and 'doc'
+                      files are allowed.
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div class="d-grid gap-2 p-3">
