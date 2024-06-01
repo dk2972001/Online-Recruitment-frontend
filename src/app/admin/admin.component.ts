@@ -8,6 +8,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent {
+userId: any;
 
   constructor(private http: HttpClient) {}
 
