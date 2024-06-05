@@ -1,27 +1,27 @@
 <div class="job-seekers-dashboard">
-    <h2>Job Seekers Dashboard</h2>
-    <p>Welcome to the job seekers dashboard. Here you can browse job listings and manage your applications.</p>
-  </div>
-  
-  <!-- jobseeker-dashboard.component.html -->
-  <div>
-    <h2>Job Seekers</h2>
-    <table mat-table [dataSource]="students">
-      <!-- Name Column -->
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef>ID</th>
-        <td mat-cell *matCellDef="let student">{{ student.id}}</td>
-      </ng-container>
-  
-      <!-- Age Column -->
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef>Name</th>
-        <td mat-cell *matCellDef="let student">{{ student.name }}</td>
-      </ng-container>
-  
-      <!-- Add more columns as needed -->
-  
-      <tr mat-header-row *matHeaderRowDef="['id', 'name']"></tr>
-      <tr mat-row *matRowDef="let row; columns: ['id', 'name']"></tr>
-    </table>
-  </div>
+  <h2>Job Seekers Dashboard</h2>
+  <p>Welcome to the job seekers dashboard. Here you can browse job listings and manage your applications.</p>
+</div>
+
+<!-- jobseeker-dashboard.component.html -->
+<div>
+  <h2>Job Seekers</h2>
+  <table mat-table [dataSource]="students" class="custom-table">
+    <!-- Name Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let student">{{ student.studentId}}</td>
+    </ng-container>
+
+    <!-- Age Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let student">{{ student.studentName }}</td>
+    </ng-container>
+
+    <!-- Add more columns as needed -->
+
+    <tr mat-header-row *matHeaderRowDef="['id', 'name']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['id', 'name']"></tr>
+  </table>
+</div>

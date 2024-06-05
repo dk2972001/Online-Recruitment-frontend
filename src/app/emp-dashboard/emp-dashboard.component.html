@@ -1,28 +1,31 @@
 <div class="employer-dashboard">
-    <h2>Employer Dashboard</h2>
-    <p>Welcome to the employer dashboard. Here you can manage your job listings and view applications.</p>
-  </div>
-  
+  <h2>Employer Dashboard</h2>
+  <p>Welcome to the employer dashboard. Here you can manage your job listings and view applications.</p>
+</div>
 
-  <!-- employer-dashboard.component.html -->
-  <div>
-    <h2>Employers</h2>
-    <table mat-table [dataSource]="employers" class="custom-table">
-      <!-- Name Column -->
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef>ID</th>
-        <td mat-cell *matCellDef="let employer">{{ employer.id }}</td>
-      </ng-container>
-  
-      <!-- Location Column -->
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef>Name</th>
-        <td mat-cell *matCellDef="let employer">{{ employer.name }}</td>
-      </ng-container>
-  
-      <!-- Add more columns as needed -->
-  
-      <tr mat-header-row *matHeaderRowDef="['id', 'name']"></tr>
-      <tr mat-row *matRowDef="let row; columns: ['id', 'name']"></tr>
-    </table>
-  </div>
+
+<!-- employer-dashboard.component.html -->
+<div>
+  <h2>Employers</h2>
+  <table mat-table [dataSource]="employers" class="custom-table">
+    <!-- Name Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let employer">{{ employer.employerId }}</td>
+    </ng-container>
+
+    <!-- Location Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let employer">{{ employer.employerName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="post">
+      <th mat-header-cell *matHeaderCellDef>Post</th>
+      <td mat-cell *matCellDef="let employer">{{ employer.employerPost }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['id', 'name' ,'post']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['id', 'name' , 'post']"></tr>
+  </table>
+</div>

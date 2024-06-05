@@ -24,11 +24,13 @@ employer-dashboard.component.css
   background-color: #f0f0f0; /* Example background color for table headers */
   color: #333; /* Example text color for table headers */
   font-weight: bold; /* Example font weight for table headers */
+  border-right: 1px solid #ccc;
 }
 
 .custom-table td {
   background-color: #fff; /* Example background color for table cells */
   color: #000; /* Example text color for table cells - changed to black */
+  border-right: 1px solid #ccc;
 }
 
 .custom-table tr:hover {

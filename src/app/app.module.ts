@@ -40,6 +40,7 @@ import { AdminComponent } from './admin/admin.component';
 import { EmpDashboardComponent } from './emp-dashboard/emp-dashboard.component';
 import { JobseekerDashboardComponent } from './jobseeker-dashboard/jobseeker-dashboard.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     AdminComponent,
     EmpDashboardComponent,
     JobseekerDashboardComponent,
+    DashboardComponent,
     // Declare LoginComponent here
   ],
   imports: [
