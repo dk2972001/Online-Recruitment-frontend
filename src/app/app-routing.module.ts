@@ -25,7 +25,8 @@ const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' }, // Redirect to the login page by default
   {path: 'admin', component: AdminComponent, children:[
     {path: 'emp-dashboard', component: EmpDashboardComponent},
-  {path: 'jobseeker-dashboard', component: JobseekerDashboardComponent}
+  {path: 'jobseeker-dashboard', component: JobseekerDashboardComponent},
+  {path:'job-list/:userId', component:JobListComponent}
   ]
   },
   

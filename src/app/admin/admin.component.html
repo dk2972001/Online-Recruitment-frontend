@@ -1,13 +1,10 @@
-
-
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav class="sidenav" fixedInViewport="true" [mode]="'side'" [opened]="true">
     <mat-nav-list>
       <mat-list-item [routerLink]="['/admin/emp-dashboard']">Employer</mat-list-item>
       <mat-list-item [routerLink]="['/admin/jobseeker-dashboard']">Job Seekers</mat-list-item>
-      <!-- <mat-list-item class="logout-item" [routerLink]="['/login']">LogOut</mat-list-item> -->
-      <div class="spacer"></div>
-      <mat-list-item [routerLink]="['/login']">LogOut</mat-list-item>
+      <mat-list-item [routerLink]="['/admin/job-list/:userId']">Jobs</mat-list-item>
+      <mat-list-item [routerLink]="['/welcome']">Log Out</mat-list-item> 
     </mat-nav-list>
 
     <div class="container mt-4">
@@ -49,4 +46,3 @@
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
-

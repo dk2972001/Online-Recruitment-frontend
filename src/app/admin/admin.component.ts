@@ -79,6 +79,7 @@ export class AdminComponent implements OnInit {
   notifications: any[] = [];
   selectedNotification: any;
   reply: string = '';
+  userId: any;
 
   constructor(private http: HttpClient) {}
 
