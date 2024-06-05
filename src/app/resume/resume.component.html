@@ -1,0 +1,13 @@
+<div class="container">
+    <div *ngFor="let job of jobAvailabilities" class="job-card">
+      <h2>{{ job.name }}</h2>
+      <p>Email: {{ job.email }}</p>
+      <p>Phone: {{ job.phoneno }}</p>
+      <p>Year of Passing: {{ job.yearofpassing }}</p>
+      <p>Percentage: {{ job.percentage }}</p>
+      <p>Language: {{ job.language }}</p>
+      <p>Skills: {{ job.skills }}</p>
+      <p>Project: {{ job.project }}</p>
+      <button (click)="downloadResume(job.id, job.resumeFilename)">Download Resume</button>
+      <button (click)="viewResume(job.id)">View Resume</button>
+    </div>

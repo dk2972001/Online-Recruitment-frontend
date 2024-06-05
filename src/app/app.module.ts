@@ -41,6 +41,8 @@ import { EmpDashboardComponent } from './emp-dashboard/emp-dashboard.component';
 import { JobseekerDashboardComponent } from './jobseeker-dashboard/jobseeker-dashboard.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { EmpLoginComponent } from './emp-login/emp-login.component';
+import { ResumeComponent } from './resume/resume.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +67,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     EmpDashboardComponent,
     JobseekerDashboardComponent,
     DashboardComponent,
+    EmpLoginComponent,
+    ResumeComponent,
     // Declare LoginComponent here
   ],
   imports: [
