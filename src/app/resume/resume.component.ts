@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { JobAvailabilityService, JobAvailability } from '../services/job-availability.service';
+import { JobAvailabilityService } from '../services/job-availability.service';
+import { JobAvailability } from '../models/job-availability.model';
+import { MatDialog } from '@angular/material/dialog';
+import { JobDetailDialogComponent } from '../job-detail-dialog/job-detail-dialog.component';
 @Component({
   selector: 'app-resume',
   templateUrl: './resume.component.html',
@@ -7,8 +10,9 @@ import { JobAvailabilityService, JobAvailability } from '../services/job-availab
 })
 export class ResumeComponent implements OnInit {
   jobAvailabilities: JobAvailability[] = [];
+ 
 
-  constructor(private jobAvailabilityService: JobAvailabilityService) { }
+  constructor(private jobAvailabilityService: JobAvailabilityService ,public dialog: MatDialog ) { }
 
   ngOnInit(): void {
     this.jobAvailabilityService.getJobAvailabilities().subscribe(data => {
@@ -39,4 +43,12 @@ export class ResumeComponent implements OnInit {
       console.error('View error:', error);
     });
   }
+
+  openDialog(job: JobAvailability): void {
+    this.dialog.open(JobDetailDialogComponent, {
+      width: '1000px',
+      data: job
+    });
+  }
+
 }

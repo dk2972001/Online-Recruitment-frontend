@@ -15,4 +15,9 @@ export class CollegeService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post<College>(this.apiUrl, college, { headers });
   }
+
+  getCollege(): Observable<College[]> {
+    return this.http.get<College[]>(`${this.apiUrl}`);
+  }
+
 }

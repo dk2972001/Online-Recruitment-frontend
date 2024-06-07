@@ -43,7 +43,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EmpLoginComponent } from './emp-login/emp-login.component';
 import { ResumeComponent } from './resume/resume.component';
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { JobDetailDialogComponent } from './job-detail-dialog/job-detail-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,6 +70,7 @@ import { ResumeComponent } from './resume/resume.component';
     DashboardComponent,
     EmpLoginComponent,
     ResumeComponent,
+    JobDetailDialogComponent,
     // Declare LoginComponent here
   ],
   imports: [
@@ -88,6 +90,9 @@ import { ResumeComponent } from './resume/resume.component';
     MatTableModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatDialogModule
+  
+    
   ],
   providers: [
     EmailService,
