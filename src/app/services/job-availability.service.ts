@@ -2,22 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { JobAvailability } from '../models/job-availability.model';
 
-export interface JobAvailability {
-  id: number;
-  name: string;
-  email: string;
-  phoneno: string;
-  yearofpassing: string;
-  percentage: number;
-  language: string;
-  skills: string;
-  project: string;
-  resumeData: Blob;
-  resumeFilename: string;
-  resumeFileType: string;
-  user: any; // Modify according to the User structure
-}
 
 @Injectable({
   providedIn: 'root'

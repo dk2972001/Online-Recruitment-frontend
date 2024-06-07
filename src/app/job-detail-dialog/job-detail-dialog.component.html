@@ -1,0 +1,37 @@
+<div class="student-info">
+<h2>{{ data.name }}</h2>
+<p>Email: {{ data.email }}</p>
+<p>Phone: {{ data.phoneno }}</p>
+<p>Year of Passing: {{ data.yearofpassing }}</p>
+<p>Percentage: {{ data.percentage }}</p>
+<p>Language: {{ data.language }}</p>
+<p>Skills: {{ data.skills }}</p>
+<p>Project: {{ data.project }}</p>
+</div>
+<!-- 
+<div *ngIf="student && student.length > 0" class="student-info">
+  <h2>Student Information</h2>
+  <div *ngFor="let s of student">
+    <p>Name: {{ s.studentName }}</p>
+    <p>Email: {{ s.studentEmail }}</p>
+    <p>Mobile: {{ s.studentMobile }}</p>
+    <p>Address: {{ s.studentAddress }}</p>
+    <p>Gender: {{ s.studentGender }}</p>
+  </div>
+</div> -->
+
+
+<div *ngIf="college && college.length > 0" class="student-info">
+    <h2>College Information</h2>
+    <div *ngFor="let c of college">
+      <p>Id: {{ c.collegeId }}</p>
+      <p>name: {{ c.collegeName }}</p>
+      <p>Address: {{c.collegeAddress }}</p>
+      
+    </div>
+  </div>
+
+<div class="button-container">
+  <button mat-button (click)="downloadResume(data.id, data.resumeFilename)">Download Resume</button>
+  <button mat-button (click)="viewResume(data.id)">View Resume</button>
+</div>

@@ -10,4 +10,5 @@
       <p>Project: {{ job.project }}</p>
       <button (click)="downloadResume(job.id, job.resumeFilename)">Download Resume</button>
       <button (click)="viewResume(job.id)">View Resume</button>
+      <button mat-button (click)="openDialog(job)">More Info</button>
     </div>
