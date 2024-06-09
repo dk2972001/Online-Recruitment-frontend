@@ -51,7 +51,9 @@ export class CollegeComponent implements OnInit {
         (response) => {
           console.log('College added:', response);
           alert('Successfully Added College Details');
-          this.redirectToJobsList();
+          // this.redirectToJobsList();
+          this.navigateToLogin();
+
         },
         (error) => {
           console.error('Error adding college:', error);
@@ -60,6 +62,10 @@ export class CollegeComponent implements OnInit {
     }
   }
 
+navigateToLogin() {
+  // Navigate to the login page
+  this.router.navigate(['/login']);
+  }
   redirectToJobsList() {
     this.router.navigate(['/job-list', this.userId]);
   }

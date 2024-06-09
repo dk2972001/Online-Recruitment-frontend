@@ -33,6 +33,7 @@ const routes: Routes = [
   },
   {path: 'emp-login' , component: EmpLoginComponent, children:[
     {path: 'job/:userId', component:JobComponent},
+    {path: 'job-list/:userId', component:JobListComponent},
     {path: 'resume' , component:ResumeComponent}
   ]},
   

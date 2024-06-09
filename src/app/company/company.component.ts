@@ -38,7 +38,8 @@ export class CompanyComponent implements OnInit {
         (data) => {
           console.log('Company added:', data);
           alert('Company added successfully');
-          this.navigateToJobs();
+          // this.navigateToJobs();
+          this.navigateToLogin();
         },
         (error) => {
           console.log('Error:', error);
@@ -49,6 +50,10 @@ export class CompanyComponent implements OnInit {
     }
   }
 
+  navigateToLogin() {
+    // Navigate to the login page
+    this.router.navigate(['/login']);
+    }
   navigateToJobs() {
     // Navigate to the login page
     this.router.navigate(['/job', this.userId]);

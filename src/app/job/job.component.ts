@@ -47,7 +47,9 @@ export class JobComponent implements OnInit {
         (data) => {
           console.log('Job added:', data);
           alert('Added new Job');
-          this.proceedingToJobList();
+          // this.proceedingToJobList();
+          this.navigatetoemp();
+
         },
         (error) => {
           console.log('Error:', error);
@@ -56,6 +58,10 @@ export class JobComponent implements OnInit {
     } else {
       console.log('Form is not valid');
     }
+  }
+
+  navigatetoemp(){
+    this.router.navigate(['/emp-login']);
   }
 
   proceedingToJobList() {
