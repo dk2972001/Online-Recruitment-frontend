@@ -21,6 +21,7 @@ import { AppointmentSchComponent } from './appointment-sch/appointment-sch.compo
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EmpLoginComponent } from './emp-login/emp-login.component';
 import { ResumeComponent } from './resume/resume.component';
+import { StdLoginComponent } from './std-login/std-login.component';
 // Import other components you want to route to
 
 const routes: Routes = [
@@ -31,12 +32,17 @@ const routes: Routes = [
   {path:'job-list/:userId', component:JobListComponent}
   ]
   },
+
   {path: 'emp-login' , component: EmpLoginComponent, children:[
     {path: 'job/:userId', component:JobComponent},
     {path: 'job-list/:userId', component:JobListComponent},
     {path: 'resume' , component:ResumeComponent}
   ]},
   
+  {path: 'std-login' , component: StdLoginComponent, children:[
+    {path: 'job-list/:userId', component:JobListComponent}
+  ]},
+
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'welcome', component: WelcomeComponent },

@@ -45,6 +45,7 @@ import { EmpLoginComponent } from './emp-login/emp-login.component';
 import { ResumeComponent } from './resume/resume.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { JobDetailDialogComponent } from './job-detail-dialog/job-detail-dialog.component';
+import { StdLoginComponent } from './std-login/std-login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,6 +72,7 @@ import { JobDetailDialogComponent } from './job-detail-dialog/job-detail-dialog.
     EmpLoginComponent,
     ResumeComponent,
     JobDetailDialogComponent,
+    StdLoginComponent,
     // Declare LoginComponent here
   ],
   imports: [

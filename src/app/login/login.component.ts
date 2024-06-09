@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   roleId: string = '';
   email: string = '';
   userList: User[] = [];
+  
 
   constructor(private router: Router, private signupservice: SignupService) {}
 
@@ -44,7 +45,8 @@ export class LoginComponent implements OnInit {
 
     if (user) {
       if (this.roleId.slice(0, 3).toLowerCase() === 'std') {
-        this.navigateToStudent(this.getIdFromUserObject(user));
+        // this.navigateToStudent(this.getIdFromUserObject(user));
+        this.navigateToStudentDashboard(this.getIdFromUserObject(user));
       } else if (this.roleId.slice(0, 3).toLowerCase() === 'emp') {
         // this.navigateToEmployer(this.getIdFromUserObject(user));
         this.navigateToEmployerDashboard();
@@ -108,5 +110,8 @@ export class LoginComponent implements OnInit {
 
   navigateToEmployerDashboard(){
     this.router.navigate(['/emp-login'])
+  }
+  navigateToStudentDashboard(userId: number | undefined){
+    this.router.navigate(['/std-login/job-list',userId])
   }
 }
