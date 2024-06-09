@@ -46,7 +46,8 @@ export class LoginComponent implements OnInit {
       if (this.roleId.slice(0, 3).toLowerCase() === 'std') {
         this.navigateToStudent(this.getIdFromUserObject(user));
       } else if (this.roleId.slice(0, 3).toLowerCase() === 'emp') {
-        this.navigateToEmployer(this.getIdFromUserObject(user));
+        // this.navigateToEmployer(this.getIdFromUserObject(user));
+        this.navigateToEmployerDashboard();
       } else {
         alert('Invalid Role, Please try again.');
         this.navigateToHome();
@@ -103,5 +104,9 @@ export class LoginComponent implements OnInit {
 
   navigateToEmployer(userId: number | undefined) {
     this.router.navigate(['/employer', userId]);
+  }
+
+  navigateToEmployerDashboard(){
+    this.router.navigate(['/emp-login'])
   }
 }

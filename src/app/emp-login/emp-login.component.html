@@ -1,7 +1,10 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav class="sidenav" fixedInViewport="true" [mode]="'side'" [opened]="true">
     <mat-nav-list>
-      <mat-list-item [routerLink]="['/emp-login/resume']">Resume</mat-list-item>
+      <mat-list-item [routerLink]="['/emp-login/job', this.userId]">Post New Job</mat-list-item>
+      <mat-list-item [routerLink]="['/emp-login/job-list' , this.userId]">Recent Posted Job</mat-list-item>
+      <mat-list-item [routerLink]="['/emp-login/resume']">Applicant</mat-list-item>
+
     </mat-nav-list>
   </mat-sidenav>
 
