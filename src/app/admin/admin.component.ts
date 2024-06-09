@@ -69,6 +69,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-admin',
@@ -81,7 +82,7 @@ export class AdminComponent implements OnInit {
   reply: string = '';
   userId: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient , private authService: AuthService) {}
 
   ngOnInit(): void {
     // Fetch notifications from backend API
@@ -122,5 +123,9 @@ export class AdminComponent implements OnInit {
       }
     );
   }
+logout(){
+this.authService.logout();
+}
+
 }
 
