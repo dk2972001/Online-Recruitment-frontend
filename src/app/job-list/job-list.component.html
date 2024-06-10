@@ -4,20 +4,28 @@
   <title>Search Job</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link
-    rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-  />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
   <div class="width-100 recent-job">
     <div class="container">
       <h2 class="recent-job-heading">RECENT JOB</h2>
       <p class="recent-job-sub-heading">Get the list of all recent jobs</p>
+      <!-- <mat-form-field appearance="outline" class="search-bar"> -->
+        <mat-form-field class="search-bar">
+        <mat-icon matPrefix>search</mat-icon>
+        
+        <input matInput type="text" [(ngModel)]="searchQuery" (input)="filterJobs()" placeholder="Search for jobs...">
+        <button mat-icon-button matSuffix *ngIf="searchQuery" (click)="clearSearch()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    
       <!-----JOB LIST----->
-      <div *ngIf="jobsList.length > 0; else noJobs">
+      <div *ngIf="filteredJobsList.length > 0; else noJobs">
         <app-job-item
-          *ngFor="let job of jobsList"
+          *ngFor="let job of filteredJobsList"
           [jobId]="jobId"
           [jobName]="job.jobName"
           [salary]="job.salary"

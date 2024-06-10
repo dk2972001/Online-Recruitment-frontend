@@ -13,8 +13,10 @@ import { Job } from '../models/job.model';
 export class JobListComponent implements OnInit {
   userId: any;
   userList: User[] = [];
-  jobsList: Job[] | any = [];
+  jobsList: Job[] =[];
   enableApply: boolean = false;
+  filteredJobsList: Job[] = [];
+  searchQuery: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -33,6 +35,7 @@ export class JobListComponent implements OnInit {
     this.jobservice.getAllJobs().subscribe({
       next: (jobs) => {
         this.jobsList = jobs.length !== 0 ? jobs : this.dummyJobsList;
+        this.filteredJobsList = this.jobsList;
         console.log('jobsList:', this.jobsList);
       },
       error: (error) => {
@@ -72,10 +75,31 @@ export class JobListComponent implements OnInit {
     this.enableApply = Boolean(result);
   }
 
+
+  filterJobs() {
+    const query = this.searchQuery.toLowerCase();
+    this.filteredJobsList = this.jobsList.filter(job => {
+      return (
+        job.jobName.toLowerCase().includes(query) ||
+        job.jobDescription.toLowerCase().includes(query) ||
+        job.salary.toLowerCase().includes(query) ||
+        job.jobType.toLowerCase().includes(query) ||
+        job.jobVaccancy.toLowerCase().includes(query)
+      );
+    });
+  }
+
+  clearSearch() {
+    this.searchQuery = '';
+    this.filterJobs();
+  }
+  
+
   jobId: string = '1';
   // dummy data
-  dummyJobsList = [
+  dummyJobsList: Job[] = [
     {
+      jobID: '1',
       jobName: 'HTML Designer',
       salary: 'No disclosed',
       applyLink: '#',
@@ -84,6 +108,7 @@ export class JobListComponent implements OnInit {
       jobVaccancy: 'Almost Full',
     },
     {
+      jobID: '2',
       jobName: 'CSS Designer',
       salary: 'No disclosed',
       applyLink: '#',
@@ -92,6 +117,7 @@ export class JobListComponent implements OnInit {
       jobVaccancy: 'Full',
     },
     {
+      jobID: '3',
       jobName: 'JS Designer',
       salary: 'No disclosed',
       applyLink: '#',
@@ -100,6 +126,7 @@ export class JobListComponent implements OnInit {
       jobVaccancy: 'Almost Full',
     },
     {
+      jobID: '4',
       jobName: 'It Support',
       salary: 'No disclosed',
       applyLink: '#',
@@ -108,6 +135,7 @@ export class JobListComponent implements OnInit {
       jobVaccancy: 'Free',
     },
     {
+      jobID: '5',
       jobName: 'IT Consultant',
       salary: 'No disclosed',
       applyLink: '#',
@@ -116,6 +144,7 @@ export class JobListComponent implements OnInit {
       jobVaccancy: 'Free',
     },
     {
+      jobID: '6',
       jobName: 'HR Trainee',
       salary: 'No disclosed',
       applyLink: '#',
