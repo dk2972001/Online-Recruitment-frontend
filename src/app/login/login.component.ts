@@ -98,7 +98,8 @@ export class LoginComponent implements OnInit {
   }
 
   navigateToStudent(userId: number | undefined) {
-    this.router.navigate(['/student', userId]);
+    // this.router.navigate(['/student', userId]);
+    this.router.navigate(['/dashboard']);
   }
 
   navigateToEmployer(userId: number | undefined) {

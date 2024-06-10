@@ -65,6 +65,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     EmpDashboardComponent,
     JobseekerDashboardComponent,
     DashboardComponent,
+
     // Declare LoginComponent here
   ],
   imports: [

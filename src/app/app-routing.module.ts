@@ -26,10 +26,7 @@ const routes: Routes = [
   {path: 'admin', component: AdminComponent, children:[
     {path: 'emp-dashboard', component: EmpDashboardComponent},
   {path: 'jobseeker-dashboard', component: JobseekerDashboardComponent},
-  {path:'job-list/:userId', component:JobListComponent}
-  ]
-  },
-  
+  {path:'job-list/:userId', component:JobListComponent}]},
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'welcome', component: WelcomeComponent },
