@@ -38,14 +38,14 @@ export class OtpVerificationComponent implements OnInit {
       // Correct OTP, perform further actions if needed
       console.log('Correct OTP');
       this.emailService.sendRole(this.email);
-      // if (this.role === 'student') {
-      //   this.navigateToStudent();
-      // } else {
-      //   this.navigateToEmployer();
-      // }
+      if (this.role === 'student') {
+        this.navigateToStudent();
+      } else {
+        this.navigateToEmployer();
+      }
       // this.navigateToRoleId(this.email);
       alert('email verify');
-      this.navigateToLogin();
+      // this.navigateToLogin();
       
 
     } else {
@@ -69,7 +69,7 @@ navigateToLogin() {
 
 navigateToStudent() {
   // Navigate to the login page
-  this.router.navigate(['/student']);
+  this.router.navigate(['/dashboard']);
   }
 navigateToEmployer() {
   // Navigate to the login page

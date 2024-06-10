@@ -1,0 +1,55 @@
+/* Container styling */
+:host {
+    display: block;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+    max-width: 1000px; /* Increase width */
+    margin: 0 auto; /* Center align the content */
+  }
+  
+  /* Headings */
+  h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #007BFF;
+  }
+  
+  /* Paragraphs */
+  p {
+    font-size: 16px;
+    margin: 5px 0;
+  }
+  
+  /* Student Information section */
+  .student-info {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Buttons */
+  button {
+    margin-top: 20px;
+    margin-right: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Ensure even spacing */
+  .button-container {
+    margin-top: 20px;
+  }
+  

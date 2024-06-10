@@ -1,4 +1,4 @@
-<div class="container" id="job-container">
+<!-- <div class="container" id="job-container">
     <div class="job-form-wrapper">
       <h2 class="card-title text-center mb-4">Job Form</h2>
       <form [formGroup]="jobForm" (ngSubmit)="addJob()" novalidate>
@@ -46,6 +46,69 @@
           <label for="job_vacancy">Number of Vacancies:</label>
           <input type="number" id="job_vacancy" formControlName="job_vacancy" class="form-control" placeholder="Enter number of vacancies" required />
           <div *ngIf="jobForm.controls['job_vacancy'].errors && jobForm.controls['job_vacancy'].touched" class="invalid-feedback d-block">
+            Number of vacancies is required.
+          </div>
+        </div>
+  
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button type="submit" [disabled]="!jobForm.valid" class="btn btn-primary me-md-2">Submit</button>
+          <button type="button" class="btn btn-secondary">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+   -->
+
+
+
+   <div class="container" id="job-container">
+    <div class="job-form-wrapper">
+      <h2 class="card-title text-center mb-4">Job Form</h2>
+      <form [formGroup]="jobForm" (ngSubmit)="addJob()" novalidate>
+        <div class="form-group">
+          <label for="jobID">Job ID:</label>
+          <input type="number" id="jobID" formControlName="jobID" class="form-control" placeholder="Enter job ID" required />
+          <div *ngIf="jobForm.controls['jobID'].errors && jobForm.controls['jobID'].touched" class="invalid-feedback d-block">
+            Job ID is required.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="jobName">Job Name:</label>
+          <input type="text" id="jobName" formControlName="jobName" class="form-control" placeholder="Enter job name" required />
+          <div *ngIf="jobForm.controls['jobName'].errors && jobForm.controls['jobName'].touched" class="invalid-feedback d-block">
+            Job Name is required.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="salary">Salary:</label>
+          <input type="text" id="salary" formControlName="salary" class="form-control" placeholder="Enter salary" required />
+          <div *ngIf="jobForm.controls['salary'].errors && jobForm.controls['salary'].touched" class="invalid-feedback d-block">
+            Salary is required.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="jobType">Job Type:</label>
+          <input type="text" id="jobType" formControlName="jobType" class="form-control" placeholder="Enter job type (e.g., Full-time)" required />
+          <div *ngIf="jobForm.controls['jobType'].errors && jobForm.controls['jobType'].touched" class="invalid-feedback d-block">
+            Job Type is required.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="jobDescription">Job Description:</label>
+          <textarea id="jobDescription" formControlName="jobDescription" class="form-control" placeholder="Enter job description" required></textarea>
+          <div *ngIf="jobForm.controls['jobDescription'].errors && jobForm.controls['jobDescription'].touched" class="invalid-feedback d-block">
+            Job Description is required.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="jobVaccancy">Number of Vacancies:</label>
+          <input type="text" id="jobVaccancy" formControlName="jobVaccancy" class="form-control" placeholder="Enter number of vacancies" required />
+          <div *ngIf="jobForm.controls['jobVaccancy'].errors && jobForm.controls['jobVaccancy'].touched" class="invalid-feedback d-block">
             Number of vacancies is required.
           </div>
         </div>

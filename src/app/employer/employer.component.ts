@@ -60,7 +60,7 @@ export class EmployerComponent implements OnInit {
   }
 
   proceedingToCompany() {
-    this.router.navigate(['/company', this.userId]);
+    this.router.navigate(['/company']);
   }
 
   navigateBack() {

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CompanyService } from '../services/company.service';
 import { Company } from '../models/company.model';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-company',
@@ -17,7 +18,8 @@ export class CompanyComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private companyService: CompanyService
+    private companyService: CompanyService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -38,7 +40,9 @@ export class CompanyComponent implements OnInit {
         (data) => {
           console.log('Company added:', data);
           alert('Company added successfully');
-          this.navigateToJobs();
+          // this.navigateToJobs();
+          this.PreventBackNavigation()
+          this.navigateToLogin();
         },
         (error) => {
           console.log('Error:', error);
@@ -49,6 +53,10 @@ export class CompanyComponent implements OnInit {
     }
   }
 
+  navigateToLogin() {
+    // Navigate to the login page
+    this.router.navigate(['/login']);
+    }
   navigateToJobs() {
     // Navigate to the login page
     this.router.navigate(['/job', this.userId]);
@@ -57,4 +65,9 @@ export class CompanyComponent implements OnInit {
   navigateBack() {
     this.router.navigate(['/']);
   }
+
+  PreventBackNavigation() {
+    this.authService.logout();
+  }
+
 }

@@ -46,7 +46,7 @@ export class StudentComponent implements OnInit {
         (response) => {
           console.log('Student added:', response);
           alert('Successfully added Student details');
-          this.router.navigate(['/college', this.userId]);
+          this.router.navigate(['/college']);
         },
         (error) => {
           console.error('Error adding student:', error);

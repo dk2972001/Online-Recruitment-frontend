@@ -1,0 +1,23 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav class="sidenav" fixedInViewport="true" [mode]="'side'" [opened]="true">
+    <mat-nav-list>
+      <mat-list-item [routerLink]="['/emp-login/job', this.userId]">Post New Job</mat-list-item>
+      <mat-list-item [routerLink]="['/emp-login/job-list' , this.userId]">Recent Posted Job</mat-list-item>
+      <mat-list-item [routerLink]="['/emp-login/resume']">Applicant</mat-list-item>
+      <mat-list-item [routerLink]="['/notifications']">Notifications</mat-list-item>
+
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Dashboard</span>
+      <span class="spacer"></span>
+      <button mat-button (click)="logout()">Logout</button>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

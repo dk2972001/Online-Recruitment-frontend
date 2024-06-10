@@ -1,12 +1,13 @@
 .recent-job {
 	padding-top: 50px;
-	background-color: #f0f3fa;
-	padding-bottom: 60px;
+	background-color: #fdfeff;
+	padding-bottom: 40px;
 }
 
 .recent-job-heading {
 	text-align: center;
-	color: #343a40;
+	color: #36a2aa;
+	/* color: #343a40; */
 }
 
 .recent-job-sub-heading {
@@ -21,4 +22,50 @@
 	margin-left: 10px;
 	margin-right: 10px;
 	margin-bottom: 20px;
+}
+
+.search-bar {
+  width: 40%;
+  max-width: 500px;
+  margin-bottom: 10px;
+  color:#fdfeff;
+  background-color: #fdfeff;
+}
+
+.mat-form-field {
+  width: 100%;
+  
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #3f51b5;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline-thick {
+  color: #3f51b5;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline-start {
+  border-radius: 4px 0 0 4px;
+
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline-end {
+  border-radius: 0 4px 4px 0;
+}
+
+.mat-form-field .mat-icon-button {
+  margin-right: 8%;
+}
+
+.mat-form-field .mat-icon-button .mat-icon {
+  color: #36a2aa;
+}
+
+.mat-input-element {
+  color: #36a2aa !important; /* Ensures text is visible */
+}
+
+.mat-form-field-label {
+  color: black !important; /* Placeholder text color */
 }

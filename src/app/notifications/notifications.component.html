@@ -1,0 +1,53 @@
+
+<!-- <div *ngFor="let notification of notifications">
+    <p>{{ notification.message }}</p>
+    <p>{{ notification.reply }}</p>
+    <p>{{ notification.jobApplicationId }}</p>
+  </div> -->
+  
+  
+
+   <!-- <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Message</th>
+        <th>Reply</th>
+        <th>Job Application ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let notification of notifications">
+        <td>{{ notification.id }}</td>
+        <td>{{ notification.message }}</td>
+        <td>{{ notification.reply }}</td>
+        <td>{{ notification.jobApplicationId }}</td>
+      </tr>
+    </tbody>
+  </table> -->
+  
+
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Message</th>
+        <th>Reply</th>
+        <th>Job Application ID</th>
+        <th></th><!-- Empty header for the reply button -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let notification of notifications">
+        <td>{{ notification.id }}</td>
+        <td>{{ notification.message }}</td>
+        <td>{{ notification.reply }}</td>
+        <td>{{ notification.jobApplicationId }}</td>
+        <td><!-- Reply button column -->
+          <button mat-button color="primary" (click)="replyToNotification(notification)">Reply</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

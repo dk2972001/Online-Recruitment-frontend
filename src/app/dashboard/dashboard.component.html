@@ -2,7 +2,7 @@
     <ul>
       <li><a routerLink="/student/:userId">Create Profile</a></li>
       <li><a routerLink="notifications">Notifications</a></li>
-      <li><a routerLink="/login">LogOut</a></li>
+      <li><a routerLink="/login" (click)="logout()" >LogOut</a></li>
     </ul>
   </nav>
   
@@ -11,3 +11,5 @@
     <router-outlet></router-outlet>
   </div>
   
+
+  <!-- a routerLink="/login" -->

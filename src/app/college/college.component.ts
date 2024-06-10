@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CollegeService } from '../services/college.service';
 import { College } from '../models/college.model'; // Ensure you have a College model
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-college',
@@ -17,7 +18,8 @@ export class CollegeComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private collegeService: CollegeService
+    private collegeService: CollegeService,
+    private authService: AuthService
   ) {
     this.createForm();
   }
@@ -51,7 +53,10 @@ export class CollegeComponent implements OnInit {
         (response) => {
           console.log('College added:', response);
           alert('Successfully Added College Details');
-          this.redirectToJobsList();
+          // this.redirectToJobsList();
+          this.PreventBackNavigation();
+          this.navigateToLogin();
+
         },
         (error) => {
           console.error('Error adding college:', error);
@@ -60,6 +65,10 @@ export class CollegeComponent implements OnInit {
     }
   }
 
+navigateToLogin() {
+  // Navigate to the login page
+  this.router.navigate(['/login']);
+  }
   redirectToJobsList() {
     this.router.navigate(['/job-list', this.userId]);
   }
@@ -67,4 +76,9 @@ export class CollegeComponent implements OnInit {
   navigateBack() {
     this.router.navigate(['/']);
   }
+
+  PreventBackNavigation() {
+    this.authService.logout();
+  }
+
 }
